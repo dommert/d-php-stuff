@@ -20,40 +20,37 @@ exit();
 }
 
 Query:
-/* Create the prepared statement */
+*/
+/*
+// Create the prepared statement 
 if ($stmt = $mysqli->prepare("INSERT INTO CodeCall (FirstName, LastName) values (?, ?)")) {
-
-/* Bind our params */
+// Bind our params
 $stmt->bind_param('ss', $firstName, $lastName);
-
-/* Set our params */
+//Set our params 
 $firstName = "Jordan";
 $lastName = "DeLozier";
-
-/* Execute the prepared Statement */
+// Execute the prepared Statement 
 $stmt->execute();
-
-/* Echo results */
+// Echo results 
 echo "Inserted {$lastName},{$firstName} into database\n";
-
-/* Set our params for second query */
+// Set our params for second query 
 $firstName = "John";
 $lastName = "Ciacia";
-
-/* Execute second Query */
+// Execute second Query 
 $stmt->execute();
 
 echo "Inserted {$lastName},{$firstName} into database\n";
 
-/* Close the statement */
+// Close the statement 
 $stmt->close();
 }
 else {
-/* Error */
+// Error 
 printf("Prepared Statement Error: %s\n", $mysqli->error);
 }
 
-*/
+*/ 
+
 
 
 ?>
