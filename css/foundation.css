@@ -1,3 +1,10 @@
+/*  Foundation CSS              */
+/* Dommert Enterprises          */
+/* Daddee File System           */
+  
+
+.row {min-width:90% !important;}
+
 meta.foundation-version {
   font-family: "/5.1.0/"; }
 

@@ -6,13 +6,14 @@
 $site = array(
 'title' => 'Daddee',
 'url' => 'http://dev.dommert.net/test/daddee',
-'description' => '';
+'description' => 'this is a website..',
+'author' => 'Dommert',
+'created' => 'jan-2014'
 ); 
-// $site['title'];
 
 // Paths
 $dir = $_SERVER['DOCUMENT_ROOT'].'/test/daddee';
-$url = 'http://dev.dommert.net/test/daddee';
+$url = $_SERVER['HTTP_HOST'] . '/test/daddee';
 $templates = $dir.'/templates';
 
 // Database
@@ -20,10 +21,13 @@ $templates = $dir.'/templates';
 
 // Librarys
 //-------------------
-$lib_main = $dir.'/lib/class.main.php'; //
+	$lib = $dir.'/lib/';
+$lib_main = $lib.'class.main.php'; // Main
+$lib_dums = $lib.'dums/class.dums.php'; // DUMS
+// JavaScript
+$js = $lib.'js/jquery-1.11.0.js';
+$modernizr = $lib.'vendor/modernizr.js';
+// Foundation
+$foundation = $lib.'foundation.min.js';
 
-$lib_dums = $dir.'/lib/dums/'; // DUMS
-
-	// JavaScript
-	// Foundation
 ?>
