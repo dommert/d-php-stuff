@@ -6,7 +6,7 @@
 //-----------------------------------------------------
 
 
-// Database Configs
+// Database Configs 
 $db_host = 'localhost';
 $db_user = 'dev';
 $db_passwd = 'D3v';

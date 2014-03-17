@@ -2,16 +2,19 @@
 $config = $_SERVER['DOCUMENT_ROOT'].'/test/daddee/globals.php';
 REQUIRE_ONCE($config);
 
+$page = "DEMO";
+// Check Login
 
 ?> 
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><?PHP ECHO $site['title']; ?></title>
+  <title><?PHP ECHO $site['title'] . ' ' . $page; ?></title>
   <link rel="stylesheet" href="css/foundation.css" />
-  <script src="<? ECHO $modernizr; ?>"></script>
+  <script src=<? ECHO '"' .$modernizr. '"'; ?>></script>
 </head>
 <body>
   <header>     
@@ -54,7 +57,38 @@ REQUIRE_ONCE($config);
     <div class="row">
       <div class="large-12 columns">
         <h1>middle</h1>
-        
+  <?PHP 
+include($lib_mysqli);
+
+CLASS Test
+{
+function read()
+  {
+    global $mysqli, $rows;
+    $query = "SELECT * FROM test_table";
+  if ($result = $mysqli->query($query)) {
+
+      /* fetch associative array */
+      while ($row = $result->fetch_assoc()) 
+      {
+        $rid = $row['rid'];
+          $rows[$rid] = $row;
+      }
+  }
+  
+  //print_r($rows);
+  return $rows; // Return your data!
+  
+  // free result set 
+  $result->free();
+    
+  }
+}
+$db = NEW Test;
+$db->read();
+echo 'testing: ' . $rows[1]['title'];
+?>
+
 
       </div>
     </div>
@@ -64,6 +98,7 @@ REQUIRE_ONCE($config);
     <div class="row">
       <div class="large-12 columns">
         <h1>footer</h1>
+
       </div>
     </div>
   </div> 

@@ -1,8 +1,17 @@
 <?PHP 
-// Global Setup
+/*  Dommert Enterprises Inc
+	(C) Jan 2014 
+	Site: DommertEnterprises.com
+	
+	Description: [globals.php]
+	This is the setup file for system. Global variables and librarys
+*/
 
 
-// Info
+// Global Setup =========================
+
+
+// Site Information
 $site = array(
 'title' => 'Daddee',
 'url' => 'http://dev.dommert.net/test/daddee',
@@ -11,23 +20,22 @@ $site = array(
 'created' => 'jan-2014'
 ); 
 
-// Paths
+// Server Paths ------------------
 $dir = $_SERVER['DOCUMENT_ROOT'].'/test/daddee';
-$url = $_SERVER['HTTP_HOST'] . '/test/daddee';
+$url = 'http://'.$_SERVER['HTTP_HOST'].'/test/daddee';
 $templates = $dir.'/templates';
 
-// Database
-	$lib_mysqli = $dir.'/etc/mysqli.config.php';
+// Database -----------------
+$lib_mysqli = $dir.'/etc/mysqli.config.php';
 
-// Librarys
-//-------------------
-	$lib = $dir.'/lib/';
+// Librarys ------------------
+$lib = $url.'/lib/'; // Base Library URL
+//$lib = '/home/dev/test/daddee/lib/';
 $lib_main = $lib.'class.main.php'; // Main
 $lib_dums = $lib.'dums/class.dums.php'; // DUMS
-// JavaScript
-$js = $lib.'js/jquery-1.11.0.js';
-$modernizr = $lib.'vendor/modernizr.js';
-// Foundation
-$foundation = $lib.'foundation.min.js';
-
+// JavaScript ----------------
+$jquery = $lib.'js/vendor/jquery.js';
+$modernizr = $lib.'js/vendor/modernizr.js'; 
+$foundation = $lib.'js/foundation.min.js';
+//$foundation = 'http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/foundation.min.js'
 ?>
