@@ -1,20 +1,31 @@
-<form data-abide method="post" action=""> 
+<?PHP
+IF(isset($_POST['submit']))
+{
+	echo 'You submitted data!!';
+	print_r($_POST);
+	$db->write($_POST['var1'], $_POST['var2']);
+    $db->write('testing 2 write', 'again....');
+}
+?>
+
+
+<form data-abide method="post"> 
 
 <div class="email-field"> 
 	<label>Email <small>required</small> 
-	<input type="email" required> 
+	<input type="email"> 
 	</label> 
 </div>
 
 <div class="name-field">
 	<label>First Name <small>required</small> 
-	<input type="text" required pattern="[a-zA-Z]+"> 
+	<input type="text" name="var1" required pattern="[a-zA-Z]+"> 
 	</label>
 </div>
 
 <div class="name-field">
 	<label>Last Name <small>required</small> 
-	<input type="text" required pattern="[a-zA-Z]+"> 
+	<input type="text" name="var2" required pattern="[a-zA-Z]+"> 
 	</label>
 </div>
 
@@ -24,5 +35,6 @@
 	</label>
 </div>
 
-<button type="submit">Submit</button>
+<button type="submit" name="submit" value="submit">Submit</button>
 </form>
+

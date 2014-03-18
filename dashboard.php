@@ -72,7 +72,7 @@ REQUIRE_ONCE($config);
   
   
   <script src="<?PHP ECHO $jquery;?>"></script>
-  <script src="<?PHP ECHO $foundation;?>"</script>
+  <script src="<?PHP ECHO $foundation;?>"></script>
   <script>
     $(document).foundation();
   </script>

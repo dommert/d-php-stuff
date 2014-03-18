@@ -14,7 +14,7 @@ $page = "DEMO";
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><?PHP ECHO $site['title'] . ' ' . $page; ?></title>
   <link rel="stylesheet" href="css/foundation.css" />
-  <script src=<? ECHO '"' .$modernizr. '"'; ?>></script>
+  <script src="<?PHP ECHO $modernizr; ?>"></script>
 </head>
 <body>
   <header>     
@@ -58,36 +58,20 @@ $page = "DEMO";
       <div class="large-12 columns">
         <h1>middle</h1>
   <?PHP 
-include($lib_mysqli);
-
-CLASS Test
-{
-function read()
-  {
-    global $mysqli, $rows;
-    $query = "SELECT * FROM test_table";
-  if ($result = $mysqli->query($query)) {
-
-      /* fetch associative array */
-      while ($row = $result->fetch_assoc()) 
-      {
-        $rid = $row['rid'];
-          $rows[$rid] = $row;
-      }
-  }
-  
-  //print_r($rows);
-  return $rows; // Return your data!
-  
-  // free result set 
-  $result->free();
-    
-  }
-}
-$db = NEW Test;
-$db->read();
-echo 'testing: ' . $rows[1]['title'];
-?>
+    include('demo.dat.php'); 
+   
+$db = NEW Test; 
+include('form.php');
+$db->read("SELECT * FROM test_table");
+echo 'testing: ' . $rows[7]['title'];
+echo '<BR>' . $rows[7]['date'];
+$db->close();
+  ?>
+  <pre>
+    <?PHP 
+      print_r($rows);
+    ?>
+  </pre>
 
 
       </div>
@@ -107,7 +91,7 @@ echo 'testing: ' . $rows[1]['title'];
   
   
   <script src="<?PHP ECHO $jquery;?>"></script>
-  <script src="<?PHP ECHO $foundation;?>"</script>
+  <script src="<?PHP ECHO $foundation;?>"></script>
   <script>
     $(document).foundation();
   </script>
