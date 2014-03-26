@@ -55,13 +55,15 @@ $page = "DEMO";
   </header>
   <div id="middle"> 
     <div class="row">
+    <?PHP include('themes/dums/login_form.php'); ?>
+
       <div class="large-12 columns">
         <h1>middle</h1>
   <?PHP 
     include('demo.dat.php'); 
    
 $db = NEW Test; 
-include('form.php');
+// include('form.php');
 $db->read("SELECT * FROM test_table");
 echo 'testing: ' . $rows[7]['title'];
 echo '<BR>' . $rows[7]['date'];
