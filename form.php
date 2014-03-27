@@ -1,11 +1,12 @@
 <?PHP
+
 IF(isset($_POST['submit']))
 {
 	echo 'You submitted data!!';
 	print_r($_POST);
 	$db->write($_POST['var1'], $_POST['var2']);
-    $db->write('testing 2 write', 'again....');
 }
+
 ?>
 
 
@@ -37,4 +38,3 @@ IF(isset($_POST['submit']))
 
 <button type="submit" name="submit" value="submit">Submit</button>
 </form>
-

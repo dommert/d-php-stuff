@@ -1,9 +1,14 @@
 <?PHP
+// Dommert Enterprises Inc
+// (c) 2014
+
 $config = $_SERVER['DOCUMENT_ROOT'].'/test/daddee/globals.php';
 REQUIRE_ONCE($config);
 
 $page = "DEMO";
+$page['parent'] = '1';
 // Check Login
+
 
 ?> 
 
@@ -55,25 +60,60 @@ $page = "DEMO";
   </header>
   <div id="middle"> 
     <div class="row">
-    <?PHP include('themes/dums/login_form.php'); ?>
 
-      <div class="large-12 columns">
-        <h1>middle</h1>
+<?PHP  
+$b = 'lib/class.mysqli.php';
+include($b);
+
+$db1 = new Database($db_host, $db_user, $db_passwd, $db_name);
+$db1->read('aa', 'SELECT * FROM test_table');
+/*
+foreach ($data as $value) {
+  $val[] = $value;
+}
+*/
+//$val[] = $data;
+//unset($data);
+
+echo "<PRE>";
+  print_r($aa);
+echo "</PRE>";
+
+$mysqldate = date('m/d/Y D @ h:m:s A',strtotime($aa[3]['date']) );
+echo $mysqldate . '<BR>';
+
+$db1->read('a', 'SELECT * FROM url');
+echo 'The data is: ' . $a[0]['uri'];
+
+/*
+include('themes/dums/login_form.php'); 
+$a = 'themes/dums/form_adduser.php';
+  include($a);
+*/
+?>
+
+  <pre>
+    <?PHP 
+     print_r($a);
+     print_r($r);
+    ?>
+
+  </pre>
+
+  <div class="large-12 columns">
+    <h1>middle</h1>
   <?PHP 
-    include('demo.dat.php'); 
-   
+  /*
+include('demo.dat.php'); 
 $db = NEW Test; 
 // include('form.php');
 $db->read("SELECT * FROM test_table");
 echo 'testing: ' . $rows[7]['title'];
 echo '<BR>' . $rows[7]['date'];
 $db->close();
+*/
   ?>
-  <pre>
-    <?PHP 
-      print_r($rows);
-    ?>
-  </pre>
+
 
 
       </div>
@@ -84,6 +124,10 @@ $db->close();
     <div class="row">
       <div class="large-12 columns">
         <h1>footer</h1>
+        <?PHP
+        echo $val[0][1][data];
+        echo $data[1][data];
+        ?>
 
       </div>
     </div>
