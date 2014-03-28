@@ -19,8 +19,31 @@ class Database
 	 //else { echo"Your Database successfully connected \n";}
 	}
 
+  function Read($query)
+  {
+    unset($GLOBALS['data']);
+    global $data, $r;
+    
+    if ($result = $this->mysqli->query($query)) 
+    {
+      // fetch associative array 
+      unset($c); $c = 0; // Setting Counter
+       while ($row = $result->fetch_assoc()) 
+      {
+        $data[] = $row;
+        $c++; // counter
+      }
+    }
+    $r[] = $c; // array row counter
+    //$$var = $data; // Assign data to new variable
+    //return data;!!
+    return $data;
+    return $r; 
+  $result->free(); // free result set 
 
-  function Read($var, $query)
+  }
+
+  function ReadVar($var, $query)
   {
   	global $$var, $r;
   	

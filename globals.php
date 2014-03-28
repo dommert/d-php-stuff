@@ -30,19 +30,29 @@ $site = array(
 $dir = $_SERVER['DOCUMENT_ROOT'].'/test/daddee';
 $url = 'http://'.$_SERVER['HTTP_HOST'].'/test/daddee';
 $templates = $dir.'/themes'; // Themes/templates
-$lib = $dir.'/lib/'; // Base Library URL
+$lib = $url.'/lib/'; // Base Library URL
 
 // ==================================================
 // Database Library -----------------
-$lib_mysqli = $lib .'class.mysqli.php';
+$lib_mysqli = $dir.'/lib/class.mysqli.php';
 
 // Librarys ------------------
-$lib_main = $lib.'class.main.php'; // Main System Classes
-$lib_dums = $lib.'dums/class.dums.php'; // DUMS Classes
+$lib_main = $dir.'/lib/class.main.php'; // Main System Classes
+$lib_dums = $dir.'/lib/dums/class.dums.php'; // DUMS Classes
 
 // JavaScript ----------------
 $jquery = $lib.'js/vendor/jquery.js';
 $modernizr = $lib.'js/vendor/modernizr.js'; 
 $foundation = $lib.'js/foundation.min.js';
   //$foundation = 'http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/foundation.min.js'
+
+
+// LOAD Libraries... 
+
+require_once($lib_main);
+require_once($lib_dums);
+//$b1 = '/home/dev/test/daddee/lib/class.mysqli.php';
+require_once($lib_mysqli);
+//require_once($b1);
+
 ?>

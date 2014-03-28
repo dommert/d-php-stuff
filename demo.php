@@ -62,11 +62,9 @@ $page['parent'] = '1';
     <div class="row">
 
 <?PHP  
-$b = 'lib/class.mysqli.php';
-include($b);
 
 $db1 = new Database($db_host, $db_user, $db_passwd, $db_name);
-$db1->read('aa', 'SELECT * FROM test_table');
+$dbtest = $db1->read('SELECT * FROM test_table');
 /*
 foreach ($data as $value) {
   $val[] = $value;
@@ -76,14 +74,14 @@ foreach ($data as $value) {
 //unset($data);
 
 echo "<PRE>";
-  print_r($aa);
+  print_r($dbtest);
 echo "</PRE>";
 
-$mysqldate = date('m/d/Y D @ h:m:s A',strtotime($aa[3]['date']) );
+$mysqldate = date('m/d/Y D @ h:m:s A',strtotime($dbtest[3]['date']) );
 echo $mysqldate . '<BR>';
 
-$db1->read('a', 'SELECT * FROM url');
-echo 'The data is: ' . $a[0]['uri'];
+$a3 = $db1->read('SELECT * FROM url');
+echo 'The data is: ' . $a3[0]['uri'];
 
 /*
 include('themes/dums/login_form.php'); 
@@ -94,7 +92,7 @@ $a = 'themes/dums/form_adduser.php';
 
   <pre>
     <?PHP 
-     print_r($a);
+     print_r($a3);
      print_r($r);
     ?>
 
@@ -124,10 +122,6 @@ $db->close();
     <div class="row">
       <div class="large-12 columns">
         <h1>footer</h1>
-        <?PHP
-        echo $val[0][1][data];
-        echo $data[1][data];
-        ?>
 
       </div>
     </div>
