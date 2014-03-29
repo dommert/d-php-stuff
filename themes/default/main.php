@@ -11,7 +11,9 @@ $config = $_SERVER['DOCUMENT_ROOT'].'/test/daddee/globals.php';
 REQUIRE_ONCE($config);
 
 // Check Login
-?>
+
+
+?> 
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -30,7 +32,7 @@ REQUIRE_ONCE($config);
         <h1>Welcome to Foundation</h1>
         <nav class="top-bar" data-topbar> 
           <ul class="title-area"> 
-            <li class="name"> <h1><a href="#">Domain.com</a></h1> </li> 
+            <li class="name"> <h1><a href="#">Domain</a></h1> </li> 
             <li class="toggle-topbar menu-icon"><a href="#">HOME</a></li>
           </ul> 
          
@@ -63,92 +65,10 @@ REQUIRE_ONCE($config);
 
     <div class="row">
 
-<table>
-  <thead>
-    <tr>
-      <th width="200">Table Header</th>
-      <th>Table Header</th>
-      <th width="150">Table Header</th>
-      <th width="150">Table Header</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Content Goes Here</td>
-      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
-      <td>Content Goes Here</td>
-      <td>Content Goes Here</td>
-    </tr>
-    <tr>
-      <td>Content Goes Here</td>
-      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-      <td>Content Goes Here</td>
-      <td>Content Goes Here</td>
-    </tr>
-    <tr>
-      <td>Content Goes Here</td>
-      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-      <td>Content Goes Here</td>
-      <td>Content Goes Here</td>
-    </tr>
-  </tbody>
-
-
-
-<?PHP  
-
-$db1 = new Database($db_host, $db_user, $db_passwd, $db_name);
-$dbtest = $db1->read('SELECT * FROM test_table');
-/*
-foreach ($data as $value) {
-  $val[] = $value;
-}
-*/
-//$val[] = $data;
-//unset($data);
-
-echo "<PRE>";
-  print_r($dbtest);
-echo "</PRE>";
-
-$mysqldate = date('m/d/Y D @ h:m:s A',strtotime($dbtest[3]['date']) );
-echo $mysqldate . '<BR>';
-
-$a3 = $db1->read('SELECT * FROM url');
-echo 'The data is: ' . $a3[0]['uri'];
-
-/*
-include('themes/dums/login_form.php'); 
-$a = 'themes/dums/form_adduser.php';
-  include($a);
-*/
-?>
-
-  <pre>
-    <?PHP 
-     print_r($a3);
-     print_r($r);
-    ?>
-
-  </pre>
 
   <div class="large-12 columns">
     <h1>middle</h1>
-  <?PHP 
-  /*
-include('demo.dat.php'); 
-$db = NEW Test; 
-// include('form.php');
-$db->read("SELECT * FROM test_table");
-echo 'testing: ' . $rows[7]['title'];
-echo '<BR>' . $rows[7]['date'];
-$db->close();
-*/
-  ?>
-
-
-
-      </div>
+  </div>
     </div>
   </div>
   <footer>
@@ -171,8 +91,3 @@ $db->close();
   </script>
 </body>
 </html>
-
-
-
-
-

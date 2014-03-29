@@ -31,11 +31,10 @@ $dir = $_SERVER['DOCUMENT_ROOT'].'/test/daddee';
 $url = 'http://'.$_SERVER['HTTP_HOST'].'/test/daddee';
 $templates = $dir.'/themes'; // Themes/templates
 $lib = $url.'/lib/'; // Base Library URL
-
+$css = $url.'/themes/'.$theme.'/css/';
 // ==================================================
 // Database Library -----------------
 $lib_mysqli = $dir.'/lib/class.mysqli.php';
-
 // Librarys ------------------
 $lib_main = $dir.'/lib/class.main.php'; // Main System Classes
 $lib_dums = $dir.'/lib/dums/class.dums.php'; // DUMS Classes
@@ -48,11 +47,9 @@ $foundation = $lib.'js/foundation.min.js';
 
 
 // LOAD Libraries... 
-
 require_once($lib_main);
 require_once($lib_dums);
-//$b1 = '/home/dev/test/daddee/lib/class.mysqli.php';
 require_once($lib_mysqli);
-//require_once($b1);
+
 
 ?>
