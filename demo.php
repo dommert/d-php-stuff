@@ -98,7 +98,7 @@ REQUIRE_ONCE($config);
 <?PHP  
 
 $db1 = new Database($db_host, $db_user, $db_passwd, $db_name);
-$dbtest = $db1->read('SELECT * FROM test_table');
+$dbtest = $db1->read('SELECT * FROM test_table LIMIT 0, 10');
 /*
 foreach ($data as $value) {
   $val[] = $value;
@@ -106,7 +106,7 @@ foreach ($data as $value) {
 */
 //$val[] = $data;
 //unset($data);
-
+echo '------'. $dbtest['0']['title'];
 echo "<PRE>";
   print_r($dbtest);
 echo "</PRE>";

@@ -22,7 +22,7 @@ class Database
   function Read($query)
   {
     unset($GLOBALS['data']);
-    global $data, $r;
+    global $data, $r ;
     
     if ($result = $this->mysqli->query($query)) 
     {
