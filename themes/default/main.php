@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
 <?PHP
 // Dommert Enterprises Inc
 // (c) 2014
@@ -60,6 +63,7 @@ REQUIRE_ONCE($config);
               </ul> 
             </section> 
           </nav>
+<<<<<<< HEAD
 =======
 
 <!-- TEMPLATE -->
@@ -77,18 +81,24 @@ REQUIRE_ONCE($config);
       <div class="large-12 columns">
         <?PHP include $header; ?>
 >>>>>>> EOD 4/26
+=======
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
       </div>
     </div>
   </header>
 
   <div id="middle"> 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
    <div class="row">
     <div class="large-12 columns">
     <h1>middle</h1>
   </div>
     </div>
   </div>
+<<<<<<< HEAD
 =======
     <div class="row">
      <div class="large-12 columns">
@@ -100,16 +110,23 @@ REQUIRE_ONCE($config);
 </div>
   
 >>>>>>> EOD 4/26
+=======
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
   <footer>
     <div id="middle"> 
     <div class="row">
       <div class="large-12 columns">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <h1>footer</h1>
 
 =======
         <?PHP include $footer; ?>
 >>>>>>> EOD 4/26
+=======
+        <h1>footer</h1>
+
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
       </div>
     </div>
   </div> 
@@ -118,16 +135,22 @@ REQUIRE_ONCE($config);
   
   
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
   <script src="<?PHP ECHO $jquery;?>"></script>
   <script src="<?PHP ECHO $foundation;?>"></script>
   <script>
     $(document).foundation();
   </script>
+<<<<<<< HEAD
 =======
 <?PHP  
 // Include JavaScript
 INCLUDE $template.'/foundation_js.php'; // Foundation
 ?>
 >>>>>>> EOD 4/26
+=======
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
 </body>
 </html>

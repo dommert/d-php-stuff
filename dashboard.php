@@ -1,9 +1,13 @@
 <?PHP
 <<<<<<< HEAD
+<<<<<<< HEAD
 $config = $_SERVER['DOCUMENT_ROOT'].'/test/daddee/globals.php';
 =======
 $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
 >>>>>>> EOD 4/26
+=======
+$config = $_SERVER['DOCUMENT_ROOT'].'/test/daddee/globals.php';
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
 REQUIRE_ONCE($config);
 
 
@@ -75,12 +79,16 @@ REQUIRE_ONCE($config);
   
   
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
   
   <script src="<?PHP ECHO $jquery;?>"></script>
   <script src="<?PHP ECHO $foundation;?>"></script>
   <script>
     $(document).foundation();
   </script>
+<<<<<<< HEAD
 =======
 <?PHP  
 // include JS
@@ -88,6 +96,8 @@ INCLUDE $templates.'/globals/foundation_js.php';
 ?>
 
 >>>>>>> EOD 4/26
+=======
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
 </body>
 </html>
 

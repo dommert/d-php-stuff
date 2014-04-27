@@ -2,14 +2,22 @@
 /*
 Class Module - DUMS
 Dommert User Management System
+<<<<<<< HEAD
  needs DBClass
 */
 
 Class Dums extends mysqli 
+=======
+
+*/
+
+Class Dums
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
 {
 
 	function adduser()
 	{
+<<<<<<< HEAD
 		// Check if Submit & Email not empty
 	//IF(isset($_POST['submit']) && (isset($_POST['email']))
 		
@@ -31,6 +39,9 @@ Class Dums extends mysqli
  
 
 		
+=======
+
+>>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
 	}
 
 	function edituser()
