@@ -1,5 +1,9 @@
 <?PHP
+<<<<<<< HEAD
+$config = $_SERVER['DOCUMENT_ROOT'].'/test/daddee/globals.php';
+=======
 $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
+>>>>>>> EOD 4/26
 REQUIRE_ONCE($config);
 
 
@@ -70,11 +74,20 @@ REQUIRE_ONCE($config);
   </footer>
   
   
+<<<<<<< HEAD
+  
+  <script src="<?PHP ECHO $jquery;?>"></script>
+  <script src="<?PHP ECHO $foundation;?>"></script>
+  <script>
+    $(document).foundation();
+  </script>
+=======
 <?PHP  
 // include JS
 INCLUDE $templates.'/globals/foundation_js.php';
 ?>
 
+>>>>>>> EOD 4/26
 </body>
 </html>
 
