@@ -8,7 +8,6 @@
 */
 
 
-<<<<<<< HEAD
 // ===== Global Setup =========================
 
 // ----- Database Configs ---------------- 
@@ -19,7 +18,7 @@ $db_name = 'test';
 // ---------------------------------
 
 // ----- Site Information --------------
-=======
+
 // Global Setup =========================
 
 // Database Configs ---------------- 
@@ -30,7 +29,6 @@ $db_name = 'test';
 
 
 // Site Information --------------
->>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
 $site = array(
 	'title' => 'Daddee',
 	'url' => 'http://dev.dommert.net/test/daddee',
@@ -39,7 +37,7 @@ $site = array(
 	'created' => 'jan-2014'
 ); 
 
-<<<<<<< HEAD
+
 // ----- Server Paths ------------------
 $dir = $_SERVER['DOCUMENT_ROOT'];
 $url = 'http://'.$_SERVER['HTTP_HOST'];
@@ -80,32 +78,5 @@ $time = explode(' ', $time);
 $time = $time[1] + $time[0];
 $start = $time;
 ?>
-=======
-// Server Paths ------------------
-$dir = $_SERVER['DOCUMENT_ROOT'].'/test/daddee';
-$url = 'http://'.$_SERVER['HTTP_HOST'].'/test/daddee';
-$templates = $dir.'/themes'; // Themes/templates
-$lib = $url.'/lib/'; // Base Library URL
-$css = $url.'/themes/'.$theme.'/css/';
-// ==================================================
-// Database Library -----------------
-$lib_mysqli = $dir.'/lib/class.mysqli.php';
-// Librarys ------------------
-$lib_main = $dir.'/lib/class.main.php'; // Main System Classes
-$lib_dums = $dir.'/lib/dums/class.dums.php'; // DUMS Classes
-
-// JavaScript ----------------
-$jquery = $lib.'js/vendor/jquery.js';
-$modernizr = $lib.'js/vendor/modernizr.js'; 
-$foundation = $lib.'js/foundation.min.js';
-  //$foundation = 'http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/foundation.min.js'
 
 
-// LOAD Libraries... 
-require_once($lib_main);
-require_once($lib_dums);
-require_once($lib_mysqli);
-
-
-?>
->>>>>>> 06891f16d91c93b5689ee44e4eb3ac6524c82fec
