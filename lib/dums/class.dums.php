@@ -3,11 +3,10 @@
 Class Module - DUMS
 Dommert User Management System
 
- needs DBClass
+needs DBClass
 */
 
 Class Dums extends mysqli 
-
 {
 	function adduser()
 	{

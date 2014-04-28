@@ -17,18 +17,10 @@ $db_passwd = 'D3v';
 $db_name = 'test'; 
 // ---------------------------------
 
+
+
 // ----- Site Information --------------
 
-// Global Setup =========================
-
-// Database Configs ---------------- 
-$db_host = 'localhost';
-$db_user = 'dev';
-$db_passwd = 'D3v';
-$db_name = 'test';
-
-
-// Site Information --------------
 $site = array(
 	'title' => 'Daddee',
 	'url' => 'http://dev.dommert.net/test/daddee',
@@ -39,7 +31,7 @@ $site = array(
 
 
 // ----- Server Paths ------------------
-$dir = $_SERVER['DOCUMENT_ROOT'];
+$dir = __DIR__; // $_SERVER['DOCUMENT_ROOT'];
 $url = 'http://'.$_SERVER['HTTP_HOST'];
 $themes = $dir.'/themes'; // Themes
 $content = $dir.'/var/content';

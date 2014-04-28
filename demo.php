@@ -11,8 +11,8 @@
 $page['title'] = "DEMO Page";
 $page['parent'] = "1";
 $theme = "default"; //Required Theme (folder)
-$config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
-  //$config = __DIR__ . '/globals.php';
+//$config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
+$config = __DIR__ . '/globals.php';
   REQUIRE_ONCE($config); // Load Configs & Libraries
 // Check Login Routine
 //------------------------------

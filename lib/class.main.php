@@ -7,14 +7,14 @@
 */
 class MainClass
 {
-	
+
+// Dommert Enterprises Inc. 
+// Global Functions
+
 	function __construct()
 	{
 		# code...
 	}
-
-	// Dommert Enterprises Inc. 
-// Global Functions
 
 	function require_login()
 	{
@@ -64,6 +64,5 @@ class MainClass
 		return $string;
 	}
 
-// ===============================
 }
 ?>
