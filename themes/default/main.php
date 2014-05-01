@@ -54,7 +54,7 @@
 
 <?PHP  
 // Include JavaScript
-INCLUDE $template.'/foundation_js.php'; // Foundation
+INCLUDE $themes.'/foundation_js.php'; // Foundation
 ?>
 
 

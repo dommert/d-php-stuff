@@ -8,7 +8,7 @@
 // Demo Template One column
 
 // ------- Load Globals & Page Info
-$page['title'] = "DEMO Page";
+$page['title'] = "Test Page";
 $page['parent'] = "1";
 $theme = "default"; //Required Theme (folder)
 $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
@@ -20,8 +20,8 @@ $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
 // -------- Content Section
 $head = $themes.'/head.php'; 
 $header = $themes.'/header.php';
-$nav = $themes.'/nav_main.php';
-$middle = $content.'/demo.dat.php';
+$nav = $content.'/nav_main.php';
+$middle = $content.'/page/test.middle.php';
 $footer = $themes.'/footer.php';
 //--------------------------------
 

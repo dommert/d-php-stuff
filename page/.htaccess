@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+RewriteEngine On 
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^(.*)$ /page/test.php?page=$1
+
+
+
+</IfModule>
