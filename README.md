@@ -1,8 +1,12 @@
-dommert-daddee
+Dommert Daddee Test
 ==============
 
-Daddee File System
+* Templates
+* Foundation
+* MySQLi + Database Library
+*
 
+Daddee File System
 * User System
 * Object System
 * File System

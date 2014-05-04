@@ -21,7 +21,7 @@ $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
 $head = $themes.'/head.php'; 
 $header = $themes.'/header.php';
 $nav = $themes.'/nav_main.php';
-$middle = $content.'/demo.dat.php';
+$middle = $content.'/demo.middle.php';
 $footer = $themes.'/footer.php';
 //--------------------------------
 
