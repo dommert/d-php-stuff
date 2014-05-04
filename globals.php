@@ -17,10 +17,10 @@ $db_passwd = 'D3v';
 $db_name = 'test'; 
 // ---------------------------------
 
-
-
 // ----- Site Information --------------
 
+
+// Site Information --------------
 $site = array(
 	'title' => 'Daddee',
 	'url' => 'http://dev.dommert.net/test/daddee',
@@ -31,13 +31,13 @@ $site = array(
 
 
 // ----- Server Paths ------------------
-$dir = __DIR__; // $_SERVER['DOCUMENT_ROOT'];
+$dir = $_SERVER['DOCUMENT_ROOT'];
 $url = 'http://'.$_SERVER['HTTP_HOST'];
-$themes = $dir.'/themes'; // Themes
+$template = $dir.'/themes'; // Themes
 $content = $dir.'/var/content';
 $lib = $url.'/lib/'; // Base Library URL
 $css = $url.'/themes/'.$theme.'/css/';
-$template = $themes.'/'.$theme;
+$themes = $template.'/'.$theme;
 // ==================================================
 
 // ------ Database Library -----------------
@@ -65,10 +65,14 @@ require_once($lib_mysqli);
 
 ?>
 <?php
+/*
 $time = microtime();
 $time = explode(' ', $time);
 $time = $time[1] + $time[0];
 $start = $time;
+*/
+$start = microtime(true);
+
 ?>
 
 
