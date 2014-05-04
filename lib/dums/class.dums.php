@@ -6,7 +6,7 @@ Dommert User Management System
  needs DBClass
 */
 
-Class Dums extends mysqli 
+Class Dums extends Database
 {
 
   public function __construct($host,$username,$password,$db_name)
@@ -21,6 +21,22 @@ Class Dums extends mysqli
    //else { echo"Your Database successfully connected \n";}
   }
 
+	function id_gen($id_length) 
+	{
+		// Allowed Characters
+		unset($GLOBALS['string']);
+		global $string;
+		
+		$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-_abcdefghijklmnopqrstuvwxyz0123456789';
+		
+			for ($i = 0; $i < $id_length; $i++) 
+			{
+				$string .= $characters[rand(0, strlen($characters) - 1)];
+			}
+
+		return $string;
+	}
+
 	function adduser()
 	{
 	echo "Add User  ". $_POST['email'] . " <BR>";
@@ -33,26 +49,36 @@ Class Dums extends mysqli
 			{
 		     	print_r($result);
 		     	$rows = $result->num_rows;
-				IF ($rows < 1)
-				{ echo " TRUE "; }
-				ELSE 
-				{ echo " FALSE ";} 
+				IF ($rows < 1) // Checking Unique Email
+				{ 
+					echo " TRUE - create" ;
+					// write email, get rid
+					// $insert->insert_id;
 
-							// include form with error 
-						// ELSE write email, get rid
-						  //set session email
-
+					//set session email 
 					// UID = genID
-					  // count_rows uid = table.uid
-						// WHILE count_row < 0 
-								// unset uid, genid
+					// count_rows uid = table.uid
+					// WHILE count_row > 0 
+							// unset uid, genid
 						// ELSE write UID user.uid
 						// Write login info hash()
 					//set session ID
 		    	  // echo thank you! & email
+					echo "<BR>" . $this->id_gen(4);
+
+
+				}
+				ELSE 
+				{ 
+					echo " FALSE - load form";// include form with error
+				} 
 			}	
-			ELSE { echo "ERROR DB";}
+			ELSE { echo "ERROR Database Connection! <BR>";}
 	 		
+	   }
+	   ELSE 
+	   {
+	   		echo 'Load Form';
 	   }
 	}
 

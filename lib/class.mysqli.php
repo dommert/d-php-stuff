@@ -21,6 +21,7 @@ class Database extends mysqli
    //else { echo"Your Database successfully connected \n";}
   }
 
+// Basic Read from a Database
   function Read($query)
   {
     unset($GLOBALS['data']);
@@ -47,6 +48,7 @@ class Database extends mysqli
 
   }
 
+// Read the Database with return variable name
   function ReadVar($var, $query)
   {
   	global $$var, $r;
@@ -72,23 +74,22 @@ class Database extends mysqli
 
   }
 
-    function WriteTest($var1 , $var2)
+
+    function Write($query,$params = FALSE)
   {
     // create a prepared statement
-    $query = "INSERT INTO test_table 
-    (title,data) VALUES (?,?)";
-    
-
     if ($stmt = parent::prepare($query)) 
-{
-    
-	    $stmt->bind_param("ss", $var1,$var2); // bind parameters for markers 
-		$stmt->execute(); // execute query
+    {
+      $ref = new ReflectionClass("mysqli_stmt");
+      $method = $ref->getMethod("bind_param");
+      $method->invokeArgs($stmt, $params);
+      //$stmt->bind_param($typeDef, $params); // bind parameters for markers 
+		  $stmt->execute(); // execute query
 	    $stmt->close(); // close statement
     }
   }
 
-
+// Return the number of rows on SQL statment
   function NumRows($sql)
   {
 
@@ -100,6 +101,22 @@ class Database extends mysqli
     mysqli_free_result($result);
     }
   }
+
+    function id_gen($id_length) 
+  {
+    // Allowed Characters
+    unset($GLOBALS['string']);
+    global $string;
+    
+    // allowed characters (removed A,a)
+    $characters = 'BCDEFGHIJKLMNOPQRSTUVWXYZ-_bcdefghijklmnopqrstuvwxyz0123456789';
+    
+      for ($i = 0; $i < $id_length; $i++) 
+      { $string .= $characters[rand(0, strlen($characters) - 1)];    
+      }
+    return $string;
+  }
+
 
  	public function __destruct()
 	{

@@ -57,22 +57,16 @@ $foundation_cdn = 'http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/fou
 
 // ---- Load Default Libraries 
 require_once($lib_main);
-require_once($lib_dums);
 require_once($lib_mysqli);
+require_once($lib_dums);
+
 //----- end defaults
 
 
 
 ?>
 <?php
-/*
-$time = microtime();
-$time = explode(' ', $time);
-$time = $time[1] + $time[0];
-$start = $time;
-*/
 $start = microtime(true);
-
 ?>
 
 

@@ -47,7 +47,7 @@ class MainClass
 
 
 	// Dommert Enterprises ID Generator
-
+  /* [moved to datbase library]
 	function id_gen($id_length) 
 	{
 		// Allowed Characters
@@ -63,6 +63,7 @@ class MainClass
 
 		return $string;
 	}
+	*/
 
 // ===============================
 }
