@@ -21,21 +21,7 @@ Class Dums extends Database
    //else { echo"Your Database successfully connected \n";}
   }
 
-	function id_gen($id_length) 
-	{
-		// Allowed Characters
-		unset($GLOBALS['string']);
-		global $string;
-		
-		$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-_abcdefghijklmnopqrstuvwxyz0123456789';
-		
-			for ($i = 0; $i < $id_length; $i++) 
-			{
-				$string .= $characters[rand(0, strlen($characters) - 1)];
-			}
 
-		return $string;
-	}
 
 	function adduser()
 	{
@@ -52,19 +38,20 @@ Class Dums extends Database
 				IF ($rows < 1) // Checking Unique Email
 				{ 
 					echo " TRUE - create" ;
-					// write email, get rid
-					// $insert->insert_id;
+					// WRITE DB EMAIL, GET RID
+					  //$this->write($sql, array("ss","test","testing344"));
+					// SET SESSION INFO
 
-					//set session email 
-					// UID = genID
-					// count_rows uid = table.uid
-					// WHILE count_row > 0 
-							// unset uid, genid
-						// ELSE write UID user.uid
-						// Write login info hash()
+					// $UID = $this->id_gen(8);
+					// $rz = $this->numrows("SELECT * FROM table WHERE uid = '$UID'");
+					// WHILE ($rz > 0) { 
+							// unset $UID; $UID = $this->id_gen(8); }
+
+						// ELSE { $sql1 = "INSERT"; $this->write($sql1, array("s","value")); }
+						// Write login info hash('sha256','');
 					//set session ID
 		    	  // echo thank you! & email
-					echo "<BR>" . $this->id_gen(4);
+					echo "<BR>" . 
 
 
 				}
