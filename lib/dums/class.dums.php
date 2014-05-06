@@ -51,23 +51,24 @@ Class Dums extends Database
 						// Write login info hash('sha256','');
 					//set session ID
 		    	  // echo thank you! & email
-					echo "<BR>" . 
+					echo "<BR>";
 
 
 				}
 				ELSE 
 				{ 
-					echo " FALSE - load form";// include form with error
-				} 
-			}	
+					echo " FALSE - load form";
+				// include form with error
+				}
+				
+			}
 			ELSE { echo "ERROR Database Connection! <BR>";}
 	 		
 	   }
 	   ELSE 
-	   {
-	   		echo 'Load Form';
-	   }
+	   { echo 'Load Form';   }
 	}
+
 
 	function edituser()
 	{
