@@ -57,7 +57,8 @@ Class Dums extends Database
 				}
 				ELSE 
 				{ 
-					echo " FALSE - load form";
+					echo " FALSE - load form
+					<INPUT TYPE=text>";
 				// include form with error
 				}
 				
@@ -82,13 +83,25 @@ Class Dums extends Database
 
 	function login()
 	{
-
+		// IF (attempt < attempts)
+		// {
+		// Check the Database for match
+		// IF (numrows == 1)
+		// {
+		//   THEN success
+		// }
+		//   ELSE 
+		//	{ 
+			// Success
+			// Attempt
+			// Form 
+		//	}
+		// }
 	}
 
 	 	function __destruct()
 	{
 		parent::close();	
-
 		//echo 'Connection Closed...<BR>';
 	}
 }
