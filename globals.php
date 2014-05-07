@@ -9,7 +9,7 @@
 
 
 // ===== Global Setup =========================
-
+session_start(); // Start Sessions
 // ----- Database Configs ---------------- 
 $db_host = 'localhost';
 $db_user = 'dev';

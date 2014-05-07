@@ -1,10 +1,8 @@
 <?PHP
 // Main Libraries 
-// 
+// Dommert Enterprises Inc. 
+// Global Functions
 
-/**
-* 
-*/
 class MainClass
 {
 	
@@ -13,8 +11,7 @@ class MainClass
 		# code...
 	}
 
-	// Dommert Enterprises Inc. 
-// Global Functions
+
 
 	function require_login()
 	{

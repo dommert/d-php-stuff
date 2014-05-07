@@ -4,7 +4,7 @@ IF(isset($_POST['submit']))
 {
 	echo 'You submitted data!!';
 	print_r($_POST);
-	$db->write($_POST['var1'], $_POST['var2']);
+
 }
 
 ?>
