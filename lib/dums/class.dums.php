@@ -72,8 +72,10 @@ Class Dums extends Database
 						$this->write($sql2, array("ss", "$UID", "$em")); 
 					
 					// Hash the Login/Password
-					$login = hash('sha256','$GLOBALS[salt].$_SESSION[email]');
-					$passwd = hash('sha256','$GLOBALS[salt].$_POST[password]');
+						if(isset($login)) { unset($login);}
+						if(isset($passwd)) { unset($passwd);}
+					$login = hash('sha256',$GLOBALS[salt].$_POST[email]);
+					$passwd = hash('sha256',$GLOBALS[salt].$_POST[password]);
 					// Write to the Login Table
 					$this->write("INSERT INTO login (login,passwd,status,uid) VALUES (?,?,?,?)",
 						array("ssis","$login","$passwd","1","$UID"));
@@ -115,20 +117,43 @@ Class Dums extends Database
 
 	function login($attempts)
 	{
-		if (!isset($_POST['attempt'])) { $_POST['attempt']='1'; }
-		IF ($_POST['attempt'] < $attempts)
+		if (isset($_POST['submit']) AND isset($_POST['email']))
 		{
-			// Check Login
-			// if row = 1
-				// Success , Set Session
-			// ELSE
-				// error:wrong login info  
-			$_POST['attempt']++;
-		}
-		ELSE 
-		{ 
-			echo "ACCESS DENIED";
-		}
+		// Unset Form Data
+		if(isset($login)) { unset($login);}
+		if(isset($passwd)) { unset($passwd);}			
+	
+		 //if (!isset($_POST['attempt'])) { $_POST['attempt']='1'; }
+			//if ($_POST['attempt'] < $attempts)
+			//{
+		
+				// Hash Form Data
+				$e = $GLOBALS['salt'] . $_POST['email'];
+				$p = $GLOBALS['salt'] . $_POST['password'];
+				$login = hash('sha256',$e);
+				$passwd = hash('sha256',$p);
+
+				// Check Login
+				echo $login . "<BR>";
+				$numr = parent::numrows("SELECT * FROM login WHERE login='$login' AND passwd='$passwd'");
+				if ($numr == 1)
+				{	
+					echo "success";
+				}	
+				 ELSE
+				{	
+					echo "fail!" . $numr;
+					$page['parent']= '1';
+					include $GLOBALS['dir'].'/themes/dums/form_login.php';
+				}
+				//$_POST['attempt']++;
+			}
+			ELSE 
+			{ 
+				echo "ACCESS DENIED!";
+			}
+
+		//}
 		
 	}
 

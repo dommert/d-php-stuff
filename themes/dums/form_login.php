@@ -25,13 +25,13 @@ IF (isset($page['parent']))
 	
 		<div class="email-field"> 
 			<label>Email <small>required</small> 
-			<input type="email" name="email" required> 
+			<input type="email" name="email" value="<?PHP IF(ISSET($_POST['email'])) { echo $_POST['email']; }?>" required> 
 			</label> 
 		</div>
 
 		<div class="name-field">
 			<label>Password <small>required</small> 
-			<input type="password" name="password" required> 
+			<input type="password" name="password" value="<?PHP IF(ISSET($_POST['password'])) { echo $_POST['password']; }?>" required> 
 			</label>
 		</div>
 		<div>
