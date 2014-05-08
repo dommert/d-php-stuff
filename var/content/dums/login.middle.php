@@ -1,14 +1,15 @@
 <?PHP
+$page['parent'] = 1;
 //$_POST['usererrors'] = 'You Suck!';
-IF ($_POST['submit'])
+IF (isset($_POST['submit']) AND isset($_POST['email']) AND $_POST['key'] = "key2693133")
 	{
-		Echo 'Login Attempt';
+		$dums = NEW Dums($db_host, $db_user, $db_passwd, $db_name);
+		$dums->adduser();
 	}
 ELSE 
 	{ 
-		include $dir.'/themes/dums/form_login.php';
-
+		include $dir.'/themes/dums/form_adduser.php';
 	}
-echo '<PRE>'.print_r($_POST).'</PRE>';
+//echo '<PRE>'.print_r($_POST).'</PRE>';
 
 ?>

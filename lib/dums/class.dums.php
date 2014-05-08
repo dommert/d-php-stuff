@@ -25,40 +25,67 @@ Class Dums extends Database
 
 	function adduser()
 	{
-	echo "Add User  ". $_POST['email'] . " <BR>";
-	
-	IF (isset($_POST['email'])) 
+		$GLOBALS['adduser'] = 1;
+		IF (isset($_POST['submit']) AND isset($_POST['email']))
+		// IF Submited Form Data & Email set
 		{	
-		//IF (isset($_POST['submit']) AND (isset($_POST['email'])))
+			// --- Form Data
 			$email = $_POST['email'];
-			IF ($result = parent::query("SELECT email FROM test_table WHERE email = '$email'"))
+			$password = $_POST['password'];
+			$fname = $_POST['fname'];
+			$lname = $_POST['lname'];
+			$group = 'user';
+			//------END
+			
+			IF ($result = parent::query("SELECT email FROM user WHERE email = '$email'"))
+			// Checking Unique Email
 			{
-		     	print_r($result);
 		     	$rows = $result->num_rows;
 				IF ($rows < 1) // Checking Unique Email
 				{ 
-					echo " TRUE - create" ;
-					// WRITE DB EMAIL, GET RID
-					  //$this->write($sql, array("ss","test","testing344"));
-					// SET SESSION INFO
+					// WRITE to Database
+				$sql = "INSERT INTO user (email, fname, lname) VALUES (?,?,?)";
+					$this->write($sql, array("sss", "$email", "$fname", "$lname"));
 
-					// $UID = $this->id_gen(8);
-					// $rz = $this->numrows("SELECT * FROM table WHERE uid = '$UID'");
-					// WHILE ($rz > 0) { 
-							// unset $UID; $UID = $this->id_gen(8); }
-
-						// ELSE { $sql1 = "INSERT"; $this->write($sql1, array("s","value")); }
-						// Write login info hash('sha256','');
-					//set session ID
-		    	  // echo thank you! & email
-					echo "<BR>";
-
+					IF (!isset($_SESSION['admin'])) 
+					// Not Admin User
+					{
+						// Write Session Data
+						$_SESSION['email'] = $_POST['email'];
+						$_SESSION['fname'] = $_POST['fname'];
+						$_SESSION['rid_user'] = $this->insert_id;
+					}
+					
+					$UID = $this->id_gen(6); // Generate UserID
+					$rz = $this->numrows("SELECT * FROM users WHERE uid = '$UID'");
+					
+					// Check if UID unique
+					WHILE ($rz > 0)
+					{				
+						unset($UID); 
+						$UID = $this->id_gen(6); 
+						echo ">";
+					}
+					 // WRITE UID
+						$em = $_SESSION['rid_user'];
+						$sql2 = "UPDATE user set uid=? WHERE rid_user=?";
+						$this->write($sql2, array("ss", "$UID", "$em")); 
+					
+					// Hash the Login/Password
+					$login = hash('sha256','$GLOBALS[salt].$_SESSION[email]');
+					$passwd = hash('sha256','$GLOBALS[salt].$_POST[password]');
+					// Write to the Login Table
+					$this->write("INSERT INTO login (login,passwd,status,uid) VALUES (?,?,?,?)",
+						array("ssis","$login","$passwd","1","$UID"));
+					
+					include $GLOBALS['content'].'/dums/adduser_done.php';
 
 				}
 				ELSE 
 				{ 
-					echo " FALSE - load form
-					<INPUT TYPE=text>";
+					$page['parent'] = 1;
+					$_POST['usererror'] = "Email Already Exists! Try Again...";
+					include $GLOBALS['dir'].'/themes/dums/form_adduser.php';
 				// include form with error
 				}
 				
@@ -67,7 +94,12 @@ Class Dums extends Database
 	 		
 	   }
 	   ELSE 
-	   { echo 'Load Form';   }
+		{ 
+			// Load Form
+			$page['parent'] = 1;
+			//$_POST['usererror'] = "Email Already Exists! Try Again...";
+			include $GLOBALS['dir'].'/themes/dums/form_adduser.php';	
+	    }
 	}
 
 
@@ -81,22 +113,23 @@ Class Dums extends Database
 		
 	}
 
-	function login()
+	function login($attempts)
 	{
-		// IF (attempt < attempts)
-		// {
-		// Check the Database for match
-		// IF (numrows == 1)
-		// {
-		//   THEN success
-		// }
-		//   ELSE 
-		//	{ 
-			// Success
-			// Attempt
-			// Form 
-		//	}
-		// }
+		if (!isset($_POST['attempt'])) { $_POST['attempt']='1'; }
+		IF ($_POST['attempt'] < $attempts)
+		{
+			// Check Login
+			// if row = 1
+				// Success , Set Session
+			// ELSE
+				// error:wrong login info  
+			$_POST['attempt']++;
+		}
+		ELSE 
+		{ 
+			echo "ACCESS DENIED";
+		}
+		
 	}
 
 	 	function __destruct()

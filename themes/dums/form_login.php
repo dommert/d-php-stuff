@@ -1,3 +1,9 @@
+<?PHP 
+IF (isset($page['parent'])) 
+{
+
+?>
+
 <!-- DUMS Login Form  -->
 
 <form method="post">
@@ -6,17 +12,26 @@
  <fieldset >
     <legend>Login</legend>
 		<form data-abide method="post"> 
-	<?PHP if (isset($_POST['usererrors']))
-	{ echo '<FONT COLOR="red">'.$_POST['usererrors'].'</font>'; } ?>		
+
+
+	<?PHP // ERROR BOX 
+	if (isset($_POST['usererror']))
+	{ ?>
+	<div data-alert="" class="alert-box alert round">
+  	<?PHP echo $_POST['usererror']; ?>
+  	<a href="" class="close">×</a>
+	</div> 
+	<?PHP } ?>		
+	
 		<div class="email-field"> 
 			<label>Email <small>required</small> 
-			<input type="email" name="email"> 
+			<input type="email" name="email" required> 
 			</label> 
 		</div>
 
 		<div class="name-field">
 			<label>Password <small>required</small> 
-			<input type="password" name="password"> 
+			<input type="password" name="password" required> 
 			</label>
 		</div>
 		<div>
@@ -27,3 +42,13 @@
 </div>
 </div>
 </form>
+
+<?PHP 
+}
+ELSE
+{
+	ECHO '<div data-alert="" class="alert-box alert round">
+    ERROR: No Parent Found!<BR>
+  	</div>';
+}
+?>

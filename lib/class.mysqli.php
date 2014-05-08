@@ -75,7 +75,7 @@ class Database extends mysqli
   }
 
 
-    function Write($query,$params = FALSE)
+    function Write($query,$params)
   {
     // create a prepared statement
     if ($stmt = parent::prepare($query)) 
