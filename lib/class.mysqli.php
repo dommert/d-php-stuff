@@ -89,6 +89,21 @@ class Database extends mysqli
     }
   }
 
+  function Prep($query,$params)
+  {
+    // create a prepared statement
+    if ($stmt = parent::prepare($query)) 
+    {
+      $ref = new ReflectionClass("mysqli_stmt");
+      $method = $ref->getMethod("bind_param");
+      $method->invokeArgs($stmt, $params);
+      //$stmt->bind_param($typeDef, $params); // bind parameters for markers 
+      $stmt->execute(); // execute query
+      $stmt->fetch_assoc();
+      $stmt->close(); // close statement
+    }
+  }
+
 // Return the number of rows on SQL statment
   function NumRows($sql)
   {

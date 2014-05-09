@@ -12,7 +12,6 @@ Class Dums extends Database
   public function __construct($host,$username,$password,$db_name)
   {
     parent::__construct($host, $username, $password, $db_name);
-    //$this->mysqli = new mysqli($host, $username, $password, $db_name);
     if(mysqli_connect_errno()) 
     {
     printf("Connect failed: %s\n", mysqli_connect_error());
@@ -25,7 +24,7 @@ Class Dums extends Database
 
 	function adduser()
 	{
-		$GLOBALS['adduser'] = 1;
+
 		IF (isset($_POST['submit']) AND isset($_POST['email']))
 		// IF Submited Form Data & Email set
 		{	
@@ -70,7 +69,8 @@ Class Dums extends Database
 						$em = $_SESSION['rid_user'];
 						$sql2 = "UPDATE user set uid=? WHERE rid_user=?";
 						$this->write($sql2, array("ss", "$UID", "$em")); 
-					
+						$SESSION['uid'] = $uid; // Set Session
+
 					// Hash the Login/Password
 						if(isset($login)) { unset($login);}
 						if(isset($passwd)) { unset($passwd);}
@@ -117,7 +117,7 @@ Class Dums extends Database
 
 	function login($attempts)
 	{
-		if (isset($_POST['submit']) AND isset($_POST['email']))
+		if (isset($_POST['submit']) AND isset($_POST['login']))
 		{
 		// Unset Form Data
 		if(isset($login)) { unset($login);}
@@ -128,21 +128,38 @@ Class Dums extends Database
 			//{
 		
 				// Hash Form Data
-				$e = $GLOBALS['salt'] . $_POST['email'];
+				$e = $GLOBALS['salt'] . $_POST['login'];
 				$p = $GLOBALS['salt'] . $_POST['password'];
 				$login = hash('sha256',$e);
 				$passwd = hash('sha256',$p);
 
 				// Check Login
-				echo $login . "<BR>";
 				$numr = parent::numrows("SELECT * FROM login WHERE login='$login' AND passwd='$passwd'");
+				
 				if ($numr == 1)
-				{	
-					echo "success";
+				{ // Check If only Login	
+					echo "Success! Logged In... <BR> ";
+					$logid = parent::read("SELECT uid FROM login WHERE login='$login' AND passwd='$passwd'");
+					$uid = $logid[0]['uid'];	
+								
+					IF ($dbinfo = parent::read("SELECT * FROM user WHERE uid='$uid'"))
+					{ 
+						// SET SESSION INFO
+						$_SESSION['logon'] = "ACCESS";
+						$_SESSION['uid'] = $dbinfo[0]['uid'];
+						$_SESSION['username'] = $dbinfo[0]['username'];
+						$_SESSION['displayname'] = $dbinfo[0]['display_name'];
+						$_SESSION['fname'] = $dbinfo[0]['fname'];
+						// ----- end 
+
+						// * Forward User to ?
+					}
+					ELSE 
+					{ echo 'Errors!!';}
 				}	
 				 ELSE
 				{	
-					echo "fail!" . $numr;
+					$_POST['usererror'] = "Error: Wrong Login Information!";
 					$page['parent']= '1';
 					include $GLOBALS['dir'].'/themes/dums/form_login.php';
 				}

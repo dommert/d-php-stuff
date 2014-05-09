@@ -1,7 +1,25 @@
 <?PHP 
-IF (isset($page['parent'])) 
+// DUMS Login Form
+IF (isset($_SESSION['logon']))
 {
+	header("Location: $url/demo.php");
+}
 
+IF (!isset($page['parent'])) 
+{
+	echo '
+	<BR>
+	<div class="row">
+	<div class="large-6 small-6 large-centered small-centered columns">
+	<div data-alert="" class="alert-box alert round">
+    ERROR: No Parent Found!<BR>
+    </div>
+    </div>
+  	</div>';
+  	
+}
+ELSE 
+{
 ?>
 
 <!-- DUMS Login Form  -->
@@ -25,7 +43,7 @@ IF (isset($page['parent']))
 	
 		<div class="email-field"> 
 			<label>Email <small>required</small> 
-			<input type="email" name="email" value="<?PHP IF(ISSET($_POST['email'])) { echo $_POST['email']; }?>" required> 
+			<input type="email" name="login" value="<?PHP IF(ISSET($_POST['login'])) { echo $_POST['login']; }?>" required> 
 			</label> 
 		</div>
 
@@ -45,10 +63,5 @@ IF (isset($page['parent']))
 
 <?PHP 
 }
-ELSE
-{
-	ECHO '<div data-alert="" class="alert-box alert round">
-    ERROR: No Parent Found!<BR>
-  	</div>';
-}
+
 ?>

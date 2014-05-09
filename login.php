@@ -1,20 +1,19 @@
 <?PHP
 // Dommert Enterprises Inc
 // (c) 2014
-
+// Page Templates  V 1.0.1
 //----------------------------------
-// beta templates
+// Login Template
 
-// Demo Template One column
+// *** DUMS One Column Template
 
 // ------- Load Globals & Page Info
-$page['title'] = "DEMO Page";
-$page['parent'] = "1";
+$page['title'] = "Login Page";
 $theme = "default"; //Required Theme (folder)
 $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
-  //$config = __DIR__ . '/globals.php';
-  REQUIRE_ONCE($config); // Load Configs & Libraries
-// Check Login Routine
+  REQUIRE_ONCE($config); // Load Configs
+
+  	// Permissions
 //------------------------------
 
 // -------- Content Section
