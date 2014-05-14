@@ -1,5 +1,5 @@
 <?PHP
-$page['parent'] = 1;
+$page['parent'] = TRUE;
 $_POST['key'] = $GLOBALS['key'];
 IF ($_POST['key'] != $GLOBALS['key'])
 {

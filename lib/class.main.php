@@ -15,7 +15,8 @@ class MainClass
 
 	function require_login()
 	{
-		if(!isset($_SESSION['logon']))
+		// Give me tokken or go login!!
+		if(!$_SESSION['logon'])
 		{
 			$_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
 			header("Location: $url/login");
@@ -29,6 +30,7 @@ class MainClass
 
 	function limit_text($text, $limit) 
 	{
+		// Limit Text.....
 		unset($GLOBALS['text']);
 		global $text;
 		if (str_word_count($text, 0) > $limit) 
@@ -40,27 +42,15 @@ class MainClass
 		
 	    return $text;
 	}
+	
 
-
-
-	// Dommert Enterprises ID Generator
-  /* [moved to datbase library]
-	function id_gen($id_length) 
+	function datetimestamp()
 	{
-		// Allowed Characters
-		unset($GLOBALS['string']);
-		global $string;
-		
-		$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-_abcdefghijklmnopqrstuvwxyz0123456789';
-		
-			for ($i = 0; $i < $id_length; $i++) 
-			{
-				$string .= $characters[rand(0, strlen($characters) - 1)];
-			}
-
-		return $string;
+		// Generic Date Time Stamp [2014-01-30 20:00:01]
+	$date = new DateTime();
+	return $date->format('Y-m-d H:i:s');
 	}
-	*/
+
 
 // ===============================
 }

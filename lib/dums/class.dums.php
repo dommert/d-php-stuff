@@ -24,7 +24,6 @@ Class Dums extends Database
 
 	function adduser()
 	{
-
 		IF (isset($_POST['submit']) AND isset($_POST['email']))
 		// IF Submited Form Data & Email set
 		{	
@@ -44,7 +43,7 @@ Class Dums extends Database
 				{ 
 					// WRITE to Database
 				$sql = "INSERT INTO user (email, fname, lname) VALUES (?,?,?)";
-					$this->write($sql, array("sss", "$email", "$fname", "$lname"));
+				   $this->write($sql, array("sss", "$email", "$fname", "$lname"));
 
 					IF (!isset($_SESSION['admin'])) 
 					// Not Admin User
@@ -52,43 +51,43 @@ Class Dums extends Database
 						// Write Session Data
 						$_SESSION['email'] = $_POST['email'];
 						$_SESSION['fname'] = $_POST['fname'];
-						$_SESSION['rid_user'] = $this->insert_id;
+						
 					}
-					
-					$UID = $this->id_gen(6); // Generate UserID
-					$rz = $this->numrows("SELECT * FROM users WHERE uid = '$UID'");
-					
+					$rowid = $this->insert_id;
 					// Check if UID unique
-					WHILE ($rz > 0)
+					$UID = $this->id_gen(6); // Generate UserID
+					$rowz = $this->numrows("SELECT * FROM users WHERE uid = '$UID'");
+					WHILE ($rowz > 0)
 					{				
 						unset($UID); 
 						$UID = $this->id_gen(6); 
-						echo ">";
+						echo "!";
 					}
 					 // WRITE UID
-						$em = $_SESSION['rid_user'];
 						$sql2 = "UPDATE user set uid=? WHERE rid_user=?";
-						$this->write($sql2, array("ss", "$UID", "$em")); 
-						$SESSION['uid'] = $uid; // Set Session
+						$this->write($sql2, array("ss", "$UID", "$rowid")); 
+						if (!$_SESSION['admin'])
+							{ $SESSION['uid'] = $uid; }// Set Session
 
 					// Hash the Login/Password
 						if(isset($login)) { unset($login);}
 						if(isset($passwd)) { unset($passwd);}
 					$login = hash('sha256',$GLOBALS[salt].$_POST[email]);
 					$passwd = hash('sha256',$GLOBALS[salt].$_POST[password]);
+					
 					// Write to the Login Table
 					$this->write("INSERT INTO login (login,passwd,status,uid) VALUES (?,?,?,?)",
 						array("ssis","$login","$passwd","1","$UID"));
-					
-					include $GLOBALS['content'].'/dums/adduser_done.php';
+					$GLOBALS['adduser']= TRUE;
+					include $GLOBALS['dir'].'/var/dums/adduser_done.php';
 
 				}
 				ELSE 
-				{ 
-					$page['parent'] = 1;
+				{ // include form with error
+					$page['parent'] = TRUE;
 					$_POST['usererror'] = "Email Already Exists! Try Again...";
 					include $GLOBALS['dir'].'/themes/dums/form_adduser.php';
-				// include form with error
+				
 				}
 				
 			}
@@ -98,8 +97,8 @@ Class Dums extends Database
 	   ELSE 
 		{ 
 			// Load Form
-			$page['parent'] = 1;
-			//$_POST['usererror'] = "Email Already Exists! Try Again...";
+			$page['parent'] = TRUE;
+			$_POST['usererror'] = "Email Already Exists! Try Again...";
 			include $GLOBALS['dir'].'/themes/dums/form_adduser.php';	
 	    }
 	}
@@ -123,9 +122,9 @@ Class Dums extends Database
 		if(isset($login)) { unset($login);}
 		if(isset($passwd)) { unset($passwd);}			
 	
-		 //if (!isset($_POST['attempt'])) { $_POST['attempt']='1'; }
-			//if ($_POST['attempt'] < $attempts)
-			//{
+		 if (!isset($_POST['attempt'])) { $_POST['attempt']='1'; }
+			if ($_POST['attempt'] < $attempts)
+			{
 		
 				// Hash Form Data
 				$e = $GLOBALS['salt'] . $_POST['login'];
@@ -150,7 +149,10 @@ Class Dums extends Database
 						$_SESSION['username'] = $dbinfo[0]['username'];
 						$_SESSION['displayname'] = $dbinfo[0]['display_name'];
 						$_SESSION['fname'] = $dbinfo[0]['fname'];
-						// ----- end 
+						$_SESSION['group'] = $dbinfo[0]['group'];
+						if($dbinfo[0]['admin'])
+						{ $_SESSION['admin'] = $dbinfo[0]['admin']; }
+						// ----- end session info
 
 						// * Forward User to ?
 					}
@@ -159,11 +161,11 @@ Class Dums extends Database
 				}	
 				 ELSE
 				{	
+					$page['parent']= TRUE;
 					$_POST['usererror'] = "Error: Wrong Login Information!";
-					$page['parent']= '1';
 					include $GLOBALS['dir'].'/themes/dums/form_login.php';
 				}
-				//$_POST['attempt']++;
+				$_POST['attempt']++;
 			}
 			ELSE 
 			{ 
@@ -177,7 +179,7 @@ Class Dums extends Database
 	 	function __destruct()
 	{
 		parent::close();	
-		//echo 'Connection Closed...<BR>';
+		
 	}
 }
 
