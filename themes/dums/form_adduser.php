@@ -1,5 +1,5 @@
 <?PHP 
-IF (isset($page['parent'])) 
+IF ($page['parent'])
 {
 	$_POST['key'] = 'key2693133';
 	// Form Key

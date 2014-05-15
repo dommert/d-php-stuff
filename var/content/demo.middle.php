@@ -1,26 +1,25 @@
 <h1> Middle Section </h1>
 <?PHP
 echo MainClass::datetimestamp() . "<BR>";
-
-if ($Testing)
-{
-	echo "True!";
-} ELSE echo "FALSE!!";
-
-$testing = 0;
-
-if ($testing == 0)
-{
-	Echo "TRUE";
-}
-ELSE Echo "False";
-
 echo '<BR> Start Test Code >>----><BR>';
-$_POST['email'] = 'testing';
-//'dommert@domain.com';
+
 
 //$dums = NEW Dums($db_host, $db_user, $db_passwd, $db_name);
 //$dums->adduser();
+//$dums->login(4);
+
+
+$page['parent'] = TRUE;
+$_POST['key'] = $GLOBALS['key'];
+include $template.'/dums/page.login.php';
+
+// $joindate = date('Y-m-d');
+// $ab = "UPDATE user SET join = ?, status = ?, group = ? WHERE email = '$email'"
+//$dums->write($ab, array("sss", "$joindate", "1", "$group"));
+
+
+
+
 
 $db1 = NEW Database($db_host, $db_user, $db_passwd, $db_name);
 

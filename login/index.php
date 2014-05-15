@@ -13,20 +13,27 @@ $theme = "default"; //Required Theme (folder)
 $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
   REQUIRE_ONCE($config); // Load Configs
 
+IF (!$_SESSION['logon'])
+{
   	// Permissions
 //------------------------------
-
+$page['parent'] = TRUE;
+$_POST['key'] = $GLOBALS['key'];
 // -------- Content Section
 $head = $themes.'/head.php'; 
 $header = $themes.'/header.php';
 $nav = $themes.'/nav_main.php';
-$middle = $content.'/dums/login.middle.php';
+$middle = $template. '/dums/page.login.php';
 $footer = $themes.'/footer.php';
 //--------------------------------
 
 // ** Load the Template ** 
 include $themes.'/main.php'; // Main Template
-
+}
+ELSE
+{
+	header("Location: $url/dashboard");
+}
 ?>
 
 

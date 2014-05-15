@@ -42,15 +42,16 @@ Class Dums extends Database
 				IF ($rows < 1) // Checking Unique Email
 				{ 
 					// WRITE to Database
-				$sql = "INSERT INTO user (email, fname, lname) VALUES (?,?,?)";
-				   $this->write($sql, array("sss", "$email", "$fname", "$lname"));
-
+				$sql = "INSERT INTO user (email, fname, lname, status) VALUES (?,?,?,?)";
+				   $this->write($sql, array("ssss", "$email", "$fname", "$lname", "1"));
+				   
 					IF (!isset($_SESSION['admin'])) 
 					// Not Admin User
 					{
 						// Write Session Data
 						$_SESSION['email'] = $_POST['email'];
 						$_SESSION['fname'] = $_POST['fname'];
+						$_SESSION['group'] = $group;
 						
 					}
 					$rowid = $this->insert_id;
@@ -64,16 +65,18 @@ Class Dums extends Database
 						echo "!";
 					}
 					 // WRITE UID
-						$sql2 = "UPDATE user set uid=? WHERE rid_user=?";
-						$this->write($sql2, array("ss", "$UID", "$rowid")); 
-						if (!$_SESSION['admin'])
-							{ $SESSION['uid'] = $uid; }// Set Session
+					$today = date('Y-m-d');
+						$sql2 = "UPDATE user SET uid=?, groupy=?, joined=? WHERE rid_user=?";
+						$this->write($sql2, array("ssss", "$UID", "user", "$today", "$rowid")); 
+						
+						//if (!isset($_SESSION['admin']))
+						//	{ $SESSION['uid'] = $UID; }// Set Session
 
 					// Hash the Login/Password
 						if(isset($login)) { unset($login);}
 						if(isset($passwd)) { unset($passwd);}
-					$login = hash('sha256',$GLOBALS[salt].$_POST[email]);
-					$passwd = hash('sha256',$GLOBALS[salt].$_POST[password]);
+					$login = hash('sha256', $GLOBALS['salt'].$_POST['email']);
+					$passwd = hash('sha256', $GLOBALS['salt'].$_POST['password']);
 					
 					// Write to the Login Table
 					$this->write("INSERT INTO login (login,passwd,status,uid) VALUES (?,?,?,?)",
@@ -98,7 +101,6 @@ Class Dums extends Database
 		{ 
 			// Load Form
 			$page['parent'] = TRUE;
-			$_POST['usererror'] = "Email Already Exists! Try Again...";
 			include $GLOBALS['dir'].'/themes/dums/form_adduser.php';	
 	    }
 	}
@@ -114,8 +116,9 @@ Class Dums extends Database
 		
 	}
 
-	function login($attempts)
+	function login($attempts=NULL)
 	{
+		//if($attempts == NULL) {$attempts = 5;}
 		if (isset($_POST['submit']) AND isset($_POST['login']))
 		{
 		// Unset Form Data
@@ -149,7 +152,7 @@ Class Dums extends Database
 						$_SESSION['username'] = $dbinfo[0]['username'];
 						$_SESSION['displayname'] = $dbinfo[0]['display_name'];
 						$_SESSION['fname'] = $dbinfo[0]['fname'];
-						$_SESSION['group'] = $dbinfo[0]['group'];
+						$_SESSION['group'] = $dbinfo[0]['groupy'];
 						if($dbinfo[0]['admin'])
 						{ $_SESSION['admin'] = $dbinfo[0]['admin']; }
 						// ----- end session info
@@ -172,7 +175,7 @@ Class Dums extends Database
 				echo "ACCESS DENIED!";
 			}
 
-		//}
+		}
 		
 	}
 
