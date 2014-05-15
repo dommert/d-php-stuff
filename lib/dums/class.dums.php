@@ -116,17 +116,17 @@ Class Dums extends Database
 		
 	}
 
-	function login($attempts=NULL)
+	function login($attempts)
 	{
-		//if($attempts == NULL) {$attempts = 5;}
+	 	if (!isset($_SESSION['attempt'])) { $_SESSION['attempt']='1'; }
+	
 		if (isset($_POST['submit']) AND isset($_POST['login']))
 		{
-		// Unset Form Data
-		if(isset($login)) { unset($login);}
-		if(isset($passwd)) { unset($passwd);}			
+			// Unset Form Data
+			if(isset($login)) { unset($login);}
+			if(isset($passwd)) { unset($passwd);}			
 	
-		 if (!isset($_POST['attempt'])) { $_POST['attempt']='1'; }
-			if ($_POST['attempt'] < $attempts)
+		 	if ($_SESSION['attempt'] < $attempts)
 			{
 		
 				// Hash Form Data
@@ -136,11 +136,11 @@ Class Dums extends Database
 				$passwd = hash('sha256',$p);
 
 				// Check Login
-				$numr = parent::numrows("SELECT * FROM login WHERE login='$login' AND passwd='$passwd'");
+				$numr = parent::numrows("SELECT * FROM login WHERE login='$login' AND passwd='$passwd' AND status='1'");
 				
 				if ($numr == 1)
 				{ // Check If only Login	
-					echo "Success! Logged In... <BR> ";
+					
 					$logid = parent::read("SELECT uid FROM login WHERE login='$login' AND passwd='$passwd'");
 					$uid = $logid[0]['uid'];	
 								
@@ -157,10 +157,12 @@ Class Dums extends Database
 						{ $_SESSION['admin'] = $dbinfo[0]['admin']; }
 						// ----- end session info
 
-						// * Forward User to ?
+						// * Forward User to Dashboard
+					$redirect = $GLOBALS['url'] . '/dashboard';
+						Header("Location: $redirect");
 					}
 					ELSE 
-					{ echo 'Errors!!';}
+					{ MainClass::error('Login Error'); }
 				}	
 				 ELSE
 				{	
@@ -168,21 +170,22 @@ Class Dums extends Database
 					$_POST['usererror'] = "Error: Wrong Login Information!";
 					include $GLOBALS['dir'].'/themes/dums/form_login.php';
 				}
-				$_POST['attempt']++;
+				$_SESSION['attempt']++;
 			}
 			ELSE 
 			{ 
-				echo "ACCESS DENIED!";
+				MainClass::error("ACCESS DENIED!");
 			}
 
 		}
 		
 	}
 
-	 	function __destruct()
+
+
+	 	function __destruct() // End
 	{
 		parent::close();	
-		
 	}
 }
 

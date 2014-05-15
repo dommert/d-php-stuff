@@ -7,7 +7,12 @@
 $page['parent'] = TRUE;
 $_POST['key'] = $GLOBALS['key'];
 */
+$attempts = 5;
 
+IF (isset($_SESSION['logon'])) 
+{ 
+	$redirect = $url;
+	Header("Location: $url/dashboard"); }
 
 IF ($_POST['key'] != $GLOBALS['key'])
 {
@@ -17,9 +22,12 @@ IF ($_POST['key'] != $GLOBALS['key'])
 IF (isset($_POST['submit']) AND isset($_POST['login']))
 	{
 		$dums = NEW Dums($db_host, $db_user, $db_passwd, $db_name);
-		$dums->login(4);
+		$dums->login($attempts);
 	}
 ELSE 
 	{ 
-		include $dir.'/themes/dums/form_login.php';
+		IF ($_SESSION['attempt'] < $attempts)
+		{ include $dir.'/themes/dums/form_login.php'; }
+		ELSE 
+		{ MainClass::error('To many login attempts!'); }
 	}

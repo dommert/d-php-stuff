@@ -19,10 +19,10 @@ $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
 $head = $themes.'/head.php'; 
 $header = $themes.'/header.php';
  $nav = $themes.'/nav_main.php';
- $middle = $content.'/template.php';
+ $middle = $content.'/template.middle.php';
 $footer = $themes.'/footer.php';
 //--------------------------------
-
+ 
 // ** Load the Template ** 
 include $themes.'/main.php'; // Main Template [Default]
 

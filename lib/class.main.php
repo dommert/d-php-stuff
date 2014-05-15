@@ -12,7 +12,6 @@ class MainClass
 	}
 
 
-
 	function require_login()
 	{
 		// Give me tokken or go login!!
@@ -23,9 +22,6 @@ class MainClass
 			exit;
 		}
 	}
-
-
-
 
 
 	function limit_text($text, $limit) 
@@ -42,8 +38,29 @@ class MainClass
 		
 	    return $text;
 	}
-	
 
+		function logout()
+	{
+		session_start();
+		session_unset();
+		session_destroy();
+		header("Location: $GLOBALS[url]");
+		exit();
+	}	
+
+	function error($msg)
+	{
+		echo '
+		<BR>
+		<div class="row">
+		<div class="large-6 small-6 large-centered small-centered columns">
+		<div data-alert="" class="alert-box alert round">
+		ERROR: ' . $msg . '
+		<a href="" class="close">×</a>
+	    </div>
+	    </div>
+	  	</div>';
+	}
 	function datetimestamp()
 	{
 		// Generic Date Time Stamp [2014-01-30 20:00:01]
