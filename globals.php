@@ -29,7 +29,7 @@ $GLOBALS['dir'] = $_SERVER['DOCUMENT_ROOT'];
 $GLOBALS['url'] = 'http://'.$_SERVER['HTTP_HOST'];
 $GLOBALS['template'] = $dir.'/themes'; // Themes
 $GLOBALS['content'] = $dir.'/var/content';
-$GLOBALS['lib'] = $url.'/lib/'; // Base Library URL
+$GLOBALS['lib'] = $url.'/lib'; // Base Library URL
 $GLOBALS['css'] = $url.'/themes/'.$theme.'/css/';
 $GLOBALS['themes'] = $template.'/'.$theme;
 
@@ -50,9 +50,9 @@ $lib_mysqli = $dir.'/lib/class.mysqli.php';
 $lib_main = $dir.'/lib/class.main.php'; // Main System Classes
 $lib_dums = $dir.'/lib/dums/class.dums.php'; // DUMS Classes
 // ------- JavaScript Libraries ----------------
-$jquery = $lib.'js/vendor/jquery.js';
-$modernizr = $lib.'js/vendor/modernizr.js'; 
-$foundation = $lib.'js/foundation.min.js';
+$jquery = $lib.'/js/vendor/jquery.js';
+$modernizr = $lib.'/js/vendor/modernizr.js'; 
+$foundation = $lib.'/js/foundation.min.js';
 $foundation_cdn = 'http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/foundation.min.js';
 
 
