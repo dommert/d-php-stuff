@@ -7,7 +7,7 @@
 $page['parent'] = TRUE;
 $_POST['key'] = $GLOBALS['key'];
 */
-$attempts = 5;
+$attempts = 4;
 
 IF (isset($_SESSION['logon'])) 
 { 

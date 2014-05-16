@@ -123,7 +123,7 @@ class Database extends mysqli
     global $string;
     
     // allowed characters (removed A,a)
-    $characters = 'BCDEFGHIJKLMNOPQRSTUVWXYZ-_bcdefghijklmnopqrstuvwxyz0123456789';
+    $characters = 'BCDEFGHIJKLMNOPQRSTUVWXYZ-bcdefghijklmnopqrstuvwxyz0123456789';
     
       for ($i = 0; $i < $id_length; $i++) 
       { $string .= $characters[rand(0, strlen($characters) - 1)];    
