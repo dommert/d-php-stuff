@@ -1,12 +1,11 @@
-<?php require_once "phpuploader/include_phpuploader.php" ?>
+<?php 
+$phpuploader = "/home/dev/test/daddee/lib/phpfileuploader/";
+require_once $phpuploader. "phpuploader/include_phpuploader.php" ?>
 <?php session_start(); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<title>Demo 2 - use UploadUrl property</title>
-</head>
-<body>
+
+
 <div>
+
 	<?php
 		$uploader=new PhpUploader();
 
@@ -15,11 +14,15 @@
 		
 		$uploader->MaxSizeKB=10240;
 		$uploader->AllowedFileExtensions="*.jpg,*.png,*.gif,*.bmp";
-		
-		$uploader->UploadUrl="demo2_upload.php";
+		$uploader->SaveDirectory="savefiles";
+		$uploader->UploadUrl=$phpuploader."demo2_upload.php";
 		
 		$uploader->Render();
-	?>
+
+
+
+		?>
+
 	
 	<script type='text/javascript'>
 	function CuteWebUI_AjaxUploader_OnTaskComplete(task)
@@ -34,6 +37,3 @@
 	}
 	</script>
 	</div>
-</body>
-	
-</html>
