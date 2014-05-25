@@ -134,27 +134,15 @@ class Database extends mysqli
     function unique_check($table,$cell,$idnum)
     {
       $id = $this->id_gen($idnum);
-      $sql = "Select $cell FROM $table WHERE $cell = '$id'";
+      $sql = "Select $cell FROM $table WHERE BINARY $cell = BINARY '$id'";
       $check = $this->NumRows($sql);
-      $i = 1;
-      WHILE ($check != 0)
+      $i = 0;
+      IF ($check == 0)
       {
-        echo "ID Error!" . $check;
-        unset($id); $id = $this->id_gen($idnum);
-        if ($i == 5)
-        {
-          echo "FAILED!!!";
-          $f = TRUE;
-          break;
-        }
-        $i++;
+        Return $id;
       }
-      IF(!isset($f))
-      {
-       echo "ID worked";
-       $this->query("INSERT INTO $table ($cell) VALUES ('$id')");
-     }
-    }
+       ELSE Return FALSE;
+      }
 
 
  	public function __destruct()
