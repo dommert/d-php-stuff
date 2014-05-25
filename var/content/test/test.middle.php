@@ -8,6 +8,9 @@
 	// View Page HTML (database/file)
 
 ?>
+
+<script src="https://togetherjs.com/togetherjs-min.js"></script>
+<button onclick="TogetherJS(this); return false;">Start TogetherJS</button>
 <?PHP
 if (isset($_REQUEST['submit']))
 {

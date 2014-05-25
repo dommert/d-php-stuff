@@ -123,13 +123,38 @@ class Database extends mysqli
     global $string;
     
     // allowed characters (removed A,a)
-    $characters = 'BCDEFGHIJKLMNOPQRSTUVWXYZ-bcdefghijklmnopqrstuvwxyz0123456789';
+    $characters = 'EFGHIJKLMNOPQRSTUVWXYZ-bcdefghijklmnopqrstuvwxyz0123456789BCD';
     
       for ($i = 0; $i < $id_length; $i++) 
       { $string .= $characters[rand(0, strlen($characters) - 1)];    
       }
     return $string;
   }
+
+    function unique_check($table,$cell,$idnum)
+    {
+      $id = $this->id_gen($idnum);
+      $sql = "Select $cell FROM $table WHERE $cell = '$id'";
+      $check = $this->NumRows($sql);
+      $i = 1;
+      WHILE ($check != 0)
+      {
+        echo "ID Error!" . $check;
+        unset($id); $id = $this->id_gen($idnum);
+        if ($i == 5)
+        {
+          echo "FAILED!!!";
+          $f = TRUE;
+          break;
+        }
+        $i++;
+      }
+      IF(!isset($f))
+      {
+       echo "ID worked";
+       $this->query("INSERT INTO $table ($cell) VALUES ('$id')");
+     }
+    }
 
 
  	public function __destruct()

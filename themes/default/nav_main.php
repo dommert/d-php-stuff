@@ -3,7 +3,7 @@
 <nav class="top-bar" data-topbar>
 <ul class="title-area">
 <li class="name">
-<h1><a href="#">My Site</a></h1>
+<h1><a href="<?PHP echo $url; ?>">My Site</a></h1>
 </li>
 <li class="toggle-topbar menu-icon"><a href="">Menu</a></li>
 </ul>
@@ -18,6 +18,7 @@
 </ul>
 </li>
 </ul>
+
 <ul class="right hide-for-large-up">
 <li class="active"><a href="#">Right Button</a></li>
 <li class="has-dropdown">
