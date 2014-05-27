@@ -3,8 +3,7 @@
 // (c) 2014
 // Page Templates  V 1.0.1
 //----------------------------------
-
-// Dashboard Template File
+// Template
 
 
 // ------- Load Globals & Page Info
@@ -20,7 +19,7 @@ $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
 $head = $themes.'/head.php'; 
 $header = $themes.'/header.php';
  $nav = $themes.'/nav_main.php';
- $middle = $content.'/dashboard/dash.middle.php';
+ $middle = $dir.'/var/dums/dash.middle.php';
 $footer = $themes.'/footer.php';
 //--------------------------------
  

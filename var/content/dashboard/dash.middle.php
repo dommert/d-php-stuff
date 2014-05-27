@@ -1,6 +1,6 @@
 <?PHP
 
-echo 'Dashboard Section'; 
+echo '<h3> Dashboard </h3>'; 
 
 ?>
 
