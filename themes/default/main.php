@@ -29,17 +29,11 @@
 </div>
  
   <footer>
-    <div id="middle"> 
     <div class="row">
       <div class="large-12 columns">
-
         <?PHP include $footer; ?>
-
- 
-
       </div>
     </div>
-  </div> 
   </footer>
   
   

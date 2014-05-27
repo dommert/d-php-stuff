@@ -16,32 +16,13 @@ include $template.'/dums/page.login.php';
 //$dums->write($ab, array("sss", "$joindate", "1", "$group"));
 
 $db1 = NEW Database($db_host, $db_user, $db_passwd, $db_name);
-$idc = $db1->unique_check('test_table','data',1);
-$i = 1;
-WHILE ($idc == FALSE)
-{ 
-	 echo "FAILURE!! ".$idc;
-	 unset($idc);
-	 $idc = $db1->unique_check('test_table','data',1,1);
-	 IF ($i == 20)
-	 {
-	 	ECHO "ID FAILED! ";
-	 	$f = TRUE;
-	 	break;
-	 }
-	 $i++;
-}
 
-	IF ($f != TRUE)
-	{
-		echo $idc . " worked";
-		$db1->query("INSERT INTO test_table (data) VALUES ('$idc')");  
-	}	
 
 
  //$sql = "INSERT INTO test_table (title,data) VALUES (?,?)";
 //$db1->write($sql, array("ss","test","testing344"));
-$db1->read("SELECT * FROM test_table WHERE rid IN (8,9,10,11) ORDER BY date DESC");
+//$db1->read("SELECT * FROM test_table WHERE rid IN (8,9,10,11) ORDER BY date DESC");
+$db1->read("Select * FROM test_table LIMIT 20");
 echo "<PRE>";
 print_r($data);
 echo "</PRE>";
