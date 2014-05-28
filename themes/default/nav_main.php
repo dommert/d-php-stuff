@@ -6,6 +6,7 @@
 			<li class="name">
 			<h1><a href="<?PHP echo $url; ?>">My Site</a></h1>
 			</li>
+
 			<li class="toggle-topbar menu-icon">
 				<a href="">Menu</a></li>
 		</ul>
@@ -44,11 +45,11 @@
 			</li>
 		</ul>
 		 
-		<!-- Large & Up (Left) -->
-		<ul class="left show-for-medium-up">
-		<li><a href="#">Home</a></li>
-		</ul>
-		</section>
+		<!-- Medium & Up (Left) -->
+			<ul class="left show-for-medium-up">
+				<li><a href="#">Home</a></li>
+			</ul>
+			</section>
 		</nav>
 	</div>
 </div>

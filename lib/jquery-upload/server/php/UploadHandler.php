@@ -142,8 +142,8 @@ class UploadHandler
                     // Uncomment the following to force the max
                     // dimensions and e.g. create square thumbnails:
                     //'crop' => true,
-                    'max_width' => 80,
-                    'max_height' => 80
+                    'max_width' => 100,
+                    'max_height' => 100
                 )
             )
         );
@@ -311,7 +311,7 @@ class UploadHandler
         }
         return null;
     }
-
+/*
     protected function get_file_objects($iteration_method = 'get_file_object') {
         $upload_dir = $this->get_upload_path();
         if (!is_dir($upload_dir)) {
@@ -321,7 +321,7 @@ class UploadHandler
             array($this, $iteration_method),
             scandir($upload_dir)
         )));
-    }
+    }  */
 
     protected function count_file_objects() {
         return count($this->get_file_objects('is_valid_file_object'));
