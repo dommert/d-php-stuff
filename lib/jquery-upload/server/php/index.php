@@ -6,7 +6,9 @@ $options = array(
     'db_pass' => 'D3v',
     'db_name' => 'test',
     'db_table' => 'files',
-    'image_versions' => array()
+    'image_versions' => array(),
+    'upload_dir'=>'/home/dev/test/daddee/data/upload/', 
+    'upload_url'=>'http://daddee.dommert.net/data/upload/'
 );
 
 error_reporting(E_ALL | E_STRICT);

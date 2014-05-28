@@ -311,17 +311,17 @@ class UploadHandler
         }
         return null;
     }
-/*
+
     protected function get_file_objects($iteration_method = 'get_file_object') {
-        $upload_dir = $this->get_upload_path();
+    /*    $upload_dir = $this->get_upload_path();
         if (!is_dir($upload_dir)) {
             return array();
         }
         return array_values(array_filter(array_map(
             array($this, $iteration_method),
             scandir($upload_dir)
-        )));
-    }  */
+        )));*/
+    }  
 
     protected function count_file_objects() {
         return count($this->get_file_objects('is_valid_file_object'));
