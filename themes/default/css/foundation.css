@@ -2,7 +2,9 @@
 /* Dommert Enterprises          */
 /* Daddee File System           */
   
-
+.round {
+    border-radius: 80% !important;
+  }
 .row {min-width:90% !important;}
 
 meta.foundation-version {
