@@ -82,14 +82,14 @@ Class Dums extends Database
 					$this->write("INSERT INTO login (login,passwd,status,uid) VALUES (?,?,?,?)",
 						array("ssis","$login","$passwd","1","$UID"));
 					$GLOBALS['adduser']= TRUE;
-					include $GLOBALS['dir'].'/var/dums/adduser_done.php';
+					include $GLOBALS['dir'].'/app/var/dums/adduser_done.php';
 
 				}
 				ELSE 
 				{ // include form with error
 					$page['parent'] = TRUE;
 					$_POST['usererror'] = "Email Already Exists! Try Again...";
-					include $GLOBALS['dir'].'/themes/dums/form_adduser.php';
+					include $GLOBALS['dir'].'/app/themes/dums/form_adduser.php';
 				
 				}
 				
@@ -101,7 +101,7 @@ Class Dums extends Database
 		{ 
 			// Load Form
 			$page['parent'] = TRUE;
-			include $GLOBALS['dir'].'/themes/dums/form_adduser.php';	
+			include $GLOBALS['dir'].'/app/themes/dums/form_adduser.php';	
 	    }
 	}
 
@@ -168,7 +168,7 @@ Class Dums extends Database
 				{	
 					$page['parent']= TRUE;
 					$_POST['usererror'] = "Error: Wrong Login Information!";
-					include $GLOBALS['dir'].'/themes/dums/form_login.php';
+					include $GLOBALS['dir'].'/app/themes/dums/form_login.php';
 				}
 				$_SESSION['attempt']++;
 			}

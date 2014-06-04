@@ -2,7 +2,7 @@
 /* Dommert Enterprises          */
 /* Daddee File System           */
   
-.round {
+#image.round {
     border-radius: 80% !important;
   }
 .row {min-width:90% !important;}

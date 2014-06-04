@@ -27,15 +27,16 @@ $GLOBALS['key'] = "key269";
 
 $GLOBALS['dir'] = $_SERVER['DOCUMENT_ROOT'];
 $GLOBALS['url'] = 'http://'.$_SERVER['HTTP_HOST'];
-$GLOBALS['template'] = $dir.'/themes'; // Themes
-$GLOBALS['content'] = $dir.'/var/content';
-$GLOBALS['lib'] = $url.'/lib'; // Base Library URL
-$GLOBALS['css'] = $url.'/themes/'.$theme.'/css/';
+$GLOBALS['template'] = $dir.'/app/themes'; // Themes
+$GLOBALS['content'] = $dir.'/app/var/content';
+$GLOBALS['lib'] = $url.'/app/lib'; // Base Library URL
+$GLOBALS['css'] = $url.'/app/themes/'.$theme.'/css/';
 $GLOBALS['themes'] = $template.'/'.$theme;
 
 // ==================================================
 // ----- Site Information --------------
 $site = array(
+	'name' => 'TestSite',
 	'title' => 'Test System',
 	'url' => 'http://dev.dommert.net/test/daddee',
 	'description' => 'this is a website..',
@@ -45,10 +46,10 @@ $site = array(
 
 
 // ------ Database Library -----------------
-$lib_mysqli = $dir.'/lib/class.mysqli.php';
+$lib_mysqli = $dir.'/app/lib/class.mysqli.php';
 // ------- Librarys ------------------
-$lib_main = $dir.'/lib/class.main.php'; // Main System Classes
-$lib_dums = $dir.'/lib/dums/class.dums.php'; // DUMS Classes
+$lib_main = $dir.'/app/lib/class.main.php'; // Main System Classes
+$lib_dums = $dir.'/app/lib/dums/class.dums.php'; // DUMS Classes
 // ------- JavaScript Libraries ----------------
 $jquery = $lib.'/js/vendor/jquery.js';
 $modernizr = $lib.'/js/vendor/modernizr.js'; 
@@ -58,7 +59,7 @@ $foundation_cdn = 'http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/fou
 
 // *** LOAD Libraries *** 
 
-// ---- Load Default Libraries 
+// ---- Load  Libraries [Defaults]
 require_once($lib_main);
 require_once($lib_mysqli);
 require_once($lib_dums);

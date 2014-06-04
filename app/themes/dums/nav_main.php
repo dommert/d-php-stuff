@@ -4,17 +4,19 @@
 
 		<ul class="title-area">
 			<li class="name">
-			<h1><a href="<?PHP echo $url; ?>">My Site</a></h1>
+			<h1><a href="<?PHP echo $url; ?>"> <?PHP echo $site['name']; ?></a></h1>
 			</li>
 
 			<li class="toggle-topbar menu-icon">
-				<a href="">Menu</a></li>
+				<a href="">Menu</a>
+			</li>
+
 		</ul>
 		<section class="top-bar-section">
 
-
+<?PHP if (ISSET($_SESSION['admin'])) { ?>
 		<!-- Medium & below (Right) -->
-		<ul class="right hide-for-large-up">
+		<ul class="right show-for-medium-up">
 			<li class="has-dropdown">
 				<a href="#">Admin</a>
 				<ul class="dropdown">
@@ -55,18 +57,18 @@
 				</ul>
 			</li>
 		</ul>
+	<?PHP } ?>
 
 
 		<!-- Medium & below (Right) -->
-		<ul class="right hide-for-large-up">
-			
-			<li class="active"><a href="#">Right Button</a></li>
+		<ul class="right show-for-medium-up">
+			<li class="active"><a href="<?PHP echo $url.'/app/themes/dums/page.logout.php'; ?>">Log Out</a></li>
 			
 			<li class="has-dropdown">
-			<a href="#">Right Dropdown</a>
+			<a href="#">Menu</a>
 				<ul class="dropdown">
-					<li><a href="#">First link in dropdown</a></li>
-					<li><a href="#">First link in dropdown</a></li>
+					<li><a href="#">Objects</a></li>
+					<li><a href="#">Files</a></li>
 					<li><a href="#">First link in dropdown</a></li>
 					<li class="has-dropdown"><a href="#">Dropdown Level 1a</a>
 						<ul class="dropdown">
@@ -80,19 +82,7 @@
 			</li>
 		</ul>
 
-				<!-- Large & Up Menu (Right)  -->
-		<ul class="right show-for-large-up">
-			<li class="active">
-				<a href="#">Right Button Active</a></li>
-			<li class="has-dropdown">
-				<a href="#">Right Button Dropdown</a>
-			<ul class="dropdown">
-			<li><a href="#">First link in dropdown</a></li>
-			</ul>
-			</li>
-		</ul>
-
-		 
+	
 		<!-- Medium & Up (Left) -->
 			<ul class="left show-for-medium-up">
 				<li><a href="#">Home</a></li>

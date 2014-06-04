@@ -27,7 +27,7 @@ IF (isset($_POST['submit']) AND isset($_POST['login']))
 ELSE 
 	{ 
 		IF ($_SESSION['attempt'] < $attempts)
-		{ include $dir.'/themes/dums/form_login.php'; }
+		{ include $dir.'/app/themes/dums/form_login.php'; }
 		ELSE 
 		{ MainClass::error('To many login attempts!'); }
 	}

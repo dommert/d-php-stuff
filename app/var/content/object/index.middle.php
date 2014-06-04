@@ -1,3 +1,4 @@
+<!-- Object Profile -->
 <div class="medium-4 columns">
 <P><BR>
 <img src="http://placekitten.com/200/200" class="round">
