@@ -1,29 +1,31 @@
 <?PHP
 // Dommert Enterprises Inc
 // (c) 2014
-// Page Templates  V 1.0.1
-//----------------------------------
-// Admin Dashboard Template
 
+//----------------------------------
+// beta templates
+
+// Demo Template One column
 
 // ------- Load Globals & Page Info
-$page['title'] = "Default Template";
-$theme = "dums"; //Required Theme (folder)
+$page['title'] = "DEMO Page";
+$page['parent'] = "1";
+$theme = "default"; //Required Theme (folder)
 $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
-  REQUIRE_ONCE($config); // Load Configs
- 
+  //$config = __DIR__ . '/globals.php';
+  REQUIRE_ONCE($config); // Load Configs & Libraries
+// Check Login Routine
 //------------------------------
-// Require User Account
-  MainClass::require_login();
+
 // -------- Content Section
 $head = $themes.'/head.php'; 
 $header = $themes.'/header.php';
- $nav = $themes.'/nav_main.php';
- $middle = $dir.'/app/var/dums/admin.middle.php';
+$nav = $themes.'/nav_main.php';
+$middle = $content.'/object/object.middle.php';
 $footer = $themes.'/footer.php';
 //--------------------------------
- 
+
 // ** Load the Template ** 
-include $themes.'/main.php'; // Main Template [Default]
+include $themes.'/main.php'; // Main Template
 
 ?>

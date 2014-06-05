@@ -11,15 +11,16 @@ $page['title'] = "Default Template";
 $theme = "dums"; //Required Theme (folder)
 $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
   REQUIRE_ONCE($config); // Load Configs
-
-  
 //------------------------------
+
+// Require User Account
+  MainClass::require_login();
 
 // -------- Content Section
 $head = $themes.'/head.php'; 
 $header = $themes.'/header.php';
  $nav = $themes.'/nav_main.php';
- $middle = $dir.'/var/dums/dash.middle.php';
+ $middle = $dir.'/app/var/dums/dash.middle.php';
 $footer = $themes.'/footer.php';
 //--------------------------------
  

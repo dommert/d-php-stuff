@@ -5,8 +5,13 @@
 	</p>
 	<?PHP 
 	$page['parent'] = TRUE;
-	$dums = new Dums($db_host, $db_user, $db_passwd, $db_name);
-	$dums->adduser();
+	if ($_SESSION['admin'] == 1)
+	{
+		$dums = new Dums($db_host, $db_user, $db_passwd, $db_name);
+		$dums->adduser();
+	} 
+	ELSE 
+	MainClass::error("You are not allowed to access this page. Admin's Only!");
 	
 	?>
 </div>
