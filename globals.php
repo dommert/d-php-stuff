@@ -32,6 +32,8 @@ $GLOBALS['content'] = $dir.'/app/var/content';
 $GLOBALS['lib'] = $url.'/app/lib'; // Base Library URL
 $GLOBALS['css'] = $url.'/app/themes/'.$theme.'/css/';
 $GLOBALS['themes'] = $template.'/'.$theme;
+$GLOBALS['var'] = $dir.'/app/var/';
+
 
 // ==================================================
 // ----- Site Information --------------
@@ -50,6 +52,7 @@ $lib_mysqli = $dir.'/app/lib/class.mysqli.php';
 // ------- Librarys ------------------
 $lib_main = $dir.'/app/lib/class.main.php'; // Main System Classes
 $lib_dums = $dir.'/app/lib/dums/class.dums.php'; // DUMS Classes
+$lib_daddee = $dir.'/app/lib/daddee/class.daddee.php';
 // ------- JavaScript Libraries ----------------
 $jquery = $lib.'/js/vendor/jquery.js';
 $modernizr = $lib.'/js/vendor/modernizr.js'; 

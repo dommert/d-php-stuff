@@ -6,9 +6,12 @@
 <?PHP 
 //if ($_SESSION['admin'] == 1)
 //{
+require_once($lib_daddee);
+
 	if ($_GET['type'] == "add")
 	{
-		include $content.'/object/form.object.php';
+		$daddee = NEW Daddee($db_host, $db_user, $db_passwd, $db_name);
+		$daddee->add_object();
 	}
 
 	IF ($_GET['type'] == "edit" && isset($_GET['id']))

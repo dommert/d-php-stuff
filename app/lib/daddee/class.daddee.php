@@ -28,6 +28,36 @@ Class Daddee extends dums
 
 	}
 
+	function add_object()
+	{
+		IF (isset($_POST['submit']) && $_GET['type'] == 'add')
+		{
+			// Form Data
+			$name = $_POST['name'];
+			$title = $_POST['title'];
+			$description = $_POST['description'];
+			$info = $_POST['info'];
+
+			$sql = "INSERT INTO object (name,title,description,info) VALUES (?,?,?,?)";
+			$this->Write($sql,array("ssss", "$name","$title","$description","$info"));
+			Echo '<p class="panel medium-6 columns medium-centered"> Thanks! Data has been saved. </P>';
+		}
+		ELSE
+		{
+			include $GLOBALS['content'].'/object/form.object.php';
+		}
+	}
+
+	function view_object()
+	{
+
+	}
+
+	function list_object()
+	{
+		
+	}
+
 	function links()
 	{
 
