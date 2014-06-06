@@ -67,7 +67,7 @@ Class Dums extends Database
 					 // WRITE UID
 					$today = date('Y-m-d');
 						$sql2 = "UPDATE user SET uid=?, groupy=?, joined=? WHERE rid_user=?";
-						$this->write($sql2, array("ssss", "$UID", "user", "$today", "$rowid")); 
+						$this->write($sql2, array("ssss", "$UID", "1", "$today", "$rowid")); 
 						
 						//if (!isset($_SESSION['admin']))
 						//	{ $SESSION['uid'] = $UID; }// Set Session
