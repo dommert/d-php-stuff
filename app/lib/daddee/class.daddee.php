@@ -37,7 +37,8 @@ Class Daddee extends dums
 			$title = $_POST['title'];
 			$description = $_POST['description'];
 			$info = $_POST['info'];
-
+			$file = $_FILES['file']['name'];
+			
 			$sql = "INSERT INTO object (name,title,description,info) VALUES (?,?,?,?)";
 			$this->Write($sql,array("ssss", "$name","$title","$description","$info"));
 			Echo '<p class="panel medium-6 columns medium-centered"> Thanks! Data has been saved. </P>';

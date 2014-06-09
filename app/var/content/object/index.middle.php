@@ -32,8 +32,7 @@ Added: <?PHP echo date("Y-m-d h:i:sa", $object[0]['date']);?> <BR>
 
 <?PHP
 }
-ELSE 
-MainClass::Error("Needs a ID Number!");
+ELSE MainClass::Error("Needs a ID Number!");
 
 if (isset($_SESSION['logon']))
 {
