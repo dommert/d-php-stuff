@@ -31,7 +31,8 @@ class Database extends mysqli
 
     {
       // fetch associative array 
-      unset($c); $c = 0; // Setting Counter
+      $c = FALSE;unset($c);
+      $c == 0; 
        while ($row = $result->fetch_assoc()) 
       {
         $data[] = $row;

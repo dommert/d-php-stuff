@@ -118,7 +118,7 @@ Class Dums extends Database
 
 	function login($attempts)
 	{
-	 	if (!isset($_SESSION['attempt'])) { $_SESSION['attempt']='1'; }
+	 	if (!isset($_SESSION['attempt'])) { $_SESSION['attempt']= 1; }
 	
 		if (isset($_POST['submit']) AND isset($_POST['login']))
 		{
@@ -181,7 +181,23 @@ Class Dums extends Database
 		
 	}
 
+	function add_group()
+	{
+		// check IF form for data & submit
+		IF (isset($_POST['submit'])) 
+		{
+			// check IF group !exists
+				// WRITE group info
+			// ELSE Error & Load Form
+		
+		}
+		ELSE include $GLOBALS['template'].'/dums/admin/form.group.php';
+	}
 
+	function list_group()
+	{
+		
+	}
 
 	 	function __destruct() // End
 	{
