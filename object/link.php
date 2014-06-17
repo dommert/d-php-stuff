@@ -22,7 +22,7 @@ $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
 $head = $themes.'/head.php'; 
 $header = $themes.'/header.php';
 $nav = $themes.'/nav_main.php';
-$middle = $content.'/object/object.middle.php';
+$middle = $content.'/object/link.middle.php';
 $footer = $themes.'/footer.php';
 //--------------------------------
 
