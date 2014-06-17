@@ -30,7 +30,7 @@ Class Daddee extends dums
 
 	function add_object()
 	{
-		IF (isset($_POST['submit']) && $_GET['type'] == 'add')
+		IF (isset($_POST['submit']) && $_GET['type'] == 'add' && $_SESSION['admin'] == 1)
 		{
 			// Form Data
 			$name = $_POST['name'];

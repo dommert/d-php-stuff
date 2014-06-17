@@ -15,6 +15,7 @@ $config = $_SERVER['DOCUMENT_ROOT'].'/globals.php';
   //$config = __DIR__ . '/globals.php';
   REQUIRE_ONCE($config); // Load Configs & Libraries
 // Check Login Routine
+  MainClass::require_login();
 //------------------------------
 
 // -------- Content Section

@@ -186,10 +186,10 @@ Class Dums extends Database
 	{
 		// check IF form for data & submit
 		
-		IF (isset($_POST['submit'])) 
+		IF (isset($_POST['submit']) && $_SESSION['admin'] == '1') 
 		{
 			// Form Data
-			print_r($_POST);
+			
 			$group_name = $_POST['groupname'];
 			// ----------
 			$sql = "INSERT INTO groups (group_name) VALUES (?)";

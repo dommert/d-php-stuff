@@ -14,9 +14,10 @@
 		<label>Information
         	<textarea placeholder="Info..." name="info"></textarea>
       	</label>
-      	<label> Avatar
+      	<!-- <label> Avatar
       		<input type="file" name="file" id="file">
       	</label>
+      	-->
       	<div>
 			<button type="submit" name="submit" value="submit">Submit</button>
 		</div> 

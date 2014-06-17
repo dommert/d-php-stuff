@@ -5,7 +5,7 @@
 	$users = $dums->read("SELECT * FROM user ORDER BY email ASC");
 
 
-	IF (isset($_POST['submit']))
+	IF (isset($_POST['submit']) && $_SESSION['admin'] == '1')
 	{
 		// Form Data 
 		 $userid = $_POST['userid'];
