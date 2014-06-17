@@ -11,7 +11,7 @@
  */
 
 error_reporting(E_ALL | E_STRICT);
-require('../lib/jquery-upload/server/UploadHandler.php');
+require('../app/lib/jquery-upload/server/UploadHandler.php');
 $upload_handler = new UploadHandler();
 
 ?>

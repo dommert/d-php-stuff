@@ -8,14 +8,13 @@
 						<ul class="dropdown">
 							<li><a href="<?PHP echo $url.'/dashboard/adduser.php'; ?>">Add User</a></li>
 							<li><a href="#">List User</a></li>
-							<li><a href="#">Edit User</a></li>
+							<!--<li><a href="#">Edit User</a></li>-->
 						</ul>
 					</li>
 					<li class="has-dropdown"><a href="#">Groups</a>
 						<ul class="dropdown">
-							<li><a href="#">Add Group</a></li>
-							<li><a href="#">List Group</a></li>
-							<li><a href="#">Edit Group</a></li>
+							<li><a href="<?PHP echo $url.'/dashboard/admin/group.php'; ?>">Add/List Group</a></li>
+										
 						</ul>
 					</li>
 					<li class="has-dropdown"><a href="#">Objects</a>

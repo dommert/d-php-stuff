@@ -1,3 +1,3 @@
 <?PHP
-header('Location: ../lib/jquery-upload/index.php');
+header('Location: ../app/lib/jquery-upload/index.php');
 ?>

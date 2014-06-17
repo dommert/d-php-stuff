@@ -8,7 +8,7 @@ $options = array(
     'db_table' => 'files',
     'image_versions' => array(),
     'upload_dir'=>'/home/dev/test/daddee/data/upload/', 
-    'upload_url'=>'http://daddee.dommert.net/data/upload/'
+    'upload_url'=>'http://dadd.dommert.net/data/upload/'
 );
 
 error_reporting(E_ALL | E_STRICT);
