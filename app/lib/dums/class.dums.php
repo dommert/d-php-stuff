@@ -67,7 +67,8 @@ Class Dums extends Database
 					 // WRITE UID
 					$today = date('Y-m-d');
 						$sql2 = "UPDATE user SET uid=?, groupy=?, joined=? WHERE rid_user=?";
-						$this->write($sql2, array("ssss", "$UID", "1", "$today", "$rowid")); 
+						$this->write($sql2, array("ssss", "$UID", "1", "$today", "$rowid"));
+						$this->write("INSERT INTO groupies (uid,gid) VALUES (?,?)", array("ss", "$UID","1"));
 						
 						//if (!isset($_SESSION['admin']))
 						//	{ $SESSION['uid'] = $UID; }// Set Session
@@ -184,19 +185,38 @@ Class Dums extends Database
 	function add_group()
 	{
 		// check IF form for data & submit
+		
 		IF (isset($_POST['submit'])) 
 		{
+			// Form Data
+			print_r($_POST);
+			$group_name = $_POST['groupname'];
+			// ----------
+			$sql = "INSERT INTO groups (group_name) VALUES (?)";
+				   $this->write($sql, array("s", "$group_name"));
+
+			/*
+			if($this->prep("INSERT INTO groups ('group_name') VALUES (?)",
+				array('$group_name')))
+			{
+				echo 'Success...';
+			} ELSE echo 'Fail....';
+			*/
+
 			// check IF group !exists
 				// WRITE group info
 			// ELSE Error & Load Form
 		
 		}
-		ELSE include $GLOBALS['template'].'/dums/admin/form.group.php';
+		ELSE 
+		{
+			print_r($_POST);
+			include $GLOBALS['template'].'/dums/admin/form.group.php';
+		}
 	}
-
 	function list_group()
 	{
-		
+
 	}
 
 	 	function __destruct() // End

@@ -10,8 +10,7 @@
 	$list->Read('SELECT * FROM groups');
 		foreach ($data as $r ) 
 		{
-
-			echo '<LI>'. $r['group_name'] . '</LI>';
+			echo '<LI> <a href="'. $GLOBALS['url'].'/dashboard/admin/groupuser.php?id='. $r['gid'] . '"> '. $r['group_name'] . ' </a> </LI>';
 		}
 	?>
 

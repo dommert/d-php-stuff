@@ -28,12 +28,12 @@ $GLOBALS['key'] = "key269";
 $GLOBALS['dir'] = $_SERVER['DOCUMENT_ROOT'];
 $GLOBALS['url'] = 'http://'.$_SERVER['HTTP_HOST'];
 $GLOBALS['template'] = $dir.'/app/themes'; // Themes
+$GLOBALS['themes'] = $template.'/'.$theme;
+$GLOBALS['css'] = $url.'/app/themes/'.$theme.'/css/';
+
 $GLOBALS['content'] = $dir.'/app/var/content';
 $GLOBALS['lib'] = $url.'/app/lib'; // Base Library URL
-$GLOBALS['css'] = $url.'/app/themes/'.$theme.'/css/';
-$GLOBALS['themes'] = $template.'/'.$theme;
 $GLOBALS['var'] = $dir.'/app/var/';
-
 
 // ==================================================
 // ----- Site Information --------------

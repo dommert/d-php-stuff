@@ -88,7 +88,7 @@ class Database extends mysqli
 	    $stmt->close(); // close statement
     }
   }
-
+// Prepared statements
   function Prep($query,$params)
   {
     // create a prepared statement
